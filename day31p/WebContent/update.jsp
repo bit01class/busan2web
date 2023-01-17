@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="0; url=list.jsp">
+<meta http-equiv="refresh" content="0; url=detail.jsp?num=<%=request.getParameter("num")%>">
 <title>Insert title here</title>
 </head>
 <body>
