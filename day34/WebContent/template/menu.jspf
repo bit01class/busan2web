@@ -5,7 +5,7 @@
 			<a href="./">[HOME]</a>
 			<a href="./stu/list.jsp">[LIST]</a>
 			<a href="./stu/add.jsp">[INSERT]</a>
-			<a href="#">[ETC]</a>
+			<a href="./user/list.jsp">[ETC]</a>
 		</p>
 		</td>
 	</tr>
