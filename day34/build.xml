@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sampleproject" default="build_project" basedir=".">
+    <description>sampleproject build</description>
+ 
+    <property name="webapp.dir"       value="."/>
+    <property name="src.dir"          value="${webapp.dir}/src"/>
+    <property name="classes.dir"      value="${webapp.dir}/webapp/WEB-INF/classes"/>
+    <property name="lib.dir"          value="${webapp.dir}/webapp/WEB-INF/lib"/>
+    <property name="lib.dev.dir"      value="${webapp.dir}/lib"/>
+ 
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+        <fileset dir="${lib.dev.dir}" includes="**/*.jar"/>
+    </path>
+ 
+    <!-- Clean classes directory -->
+    <target name="clean">
+        <delete dir="${classes.dir}" />
+    </target>
+ 
+ 
+    <!-- Compile -->
+    <target name="compile">
+        <mkdir dir="${classes.dir}" />
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" encoding="utf-8" classpathref="classpath" includeantruntime="false" />
+    </target>
+ 
+ 
+    <!-- Copy Properties -->
+    <target name="copy_prop">
+        <copy todir="${classes.dir}" overwrite="true" >
+            <fileset dir="${src.dir}">
+                <include name="**/*.properties" />
+            </fileset>
+        </copy>
+ 
+        <copy todir="${classes.dir}" overwrite="true" >
+            <fileset dir="${src.dir}">
+                <include name="**/*.properties.sample" />
+            </fileset>
+            <globmapper from="*.properties.sample" to="*.properties"/>
+        </copy>
+ 
+        <copy todir="${classes.dir}" overwrite="true" >
+            <fileset dir="${src.dir}">
+                <include name="**/*.xml" />
+            </fileset>
+        </copy>
+    </target>
+    
+    <target name="build_project"     depends="clean, compile, copy_prop" />
+</project>

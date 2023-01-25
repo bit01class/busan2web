@@ -1,0 +1,28 @@
+<%@ page pageEncoding="UTF-8" import="java.sql.*"%>
+<%!
+String driver="com.mysql.jdbc.Driver";
+String url="jdbc:mysql://localhost:3306/lecture";
+java.util.Map<String,String> env=System.getenv();
+String user=env.get("local.mysql.user");
+String password=env.get("local.mysql.password");
+
+Connection conn;
+Statement stmt;
+ResultSet rs;
+
+Connection getConnection(){
+	try{
+		if(conn==null || conn.isClosed()){
+			Class.forName(driver);
+			conn=DriverManager.getConnection(url, user, password);
+		}
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+	return conn;
+}
+
+%>
+
+
+

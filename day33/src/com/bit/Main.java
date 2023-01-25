@@ -14,7 +14,6 @@ public class Main {
 		System.out.println("학생성적관리프로그램(ver 0.8.0 mysql)");
 		Scanner sc=new Scanner(System.in);
 		String input=null;
-
 //		String driver="com.mysql.jdbc.Driver";
 //		String url="jdbc:mysql://localhost:3306/lecture";
 //		Map<String,String> env=System.getenv();

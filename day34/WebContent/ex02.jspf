@@ -1,0 +1,5 @@
+<%@ page pageEncoding="UTF-8"%>
+<%
+before=2222;
+%>
+	<h2>ex02 page의 내용<%=before %></h2>

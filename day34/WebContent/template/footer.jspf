@@ -1,0 +1,9 @@
+<%@ page pageEncoding="UTF-8"%>
+</td>
+	</tr>
+	<tr>
+		<td bgcolor="gray" align="center">
+			&copy; by bitacademy co.ltd. All rights reserved.
+		</td>
+	</tr>
+</table>
