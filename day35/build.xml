@@ -23,7 +23,7 @@
  
   <!-- Target for compiling the java code-->
   <target name="compile" depends="clean, makedir">
-    <javac srcdir="${src.dir}" destdir="${classes.dir}">
+    <javac encoding="utf-8" srcdir="${src.dir}" destdir="${classes.dir}">
     </javac>	
   </target>
  
