@@ -7,16 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="template/header.jsp"></jsp:include>
-<jsp:include page="template/menu.jsp">
-	<jsp:param value="." name="path"/>
-</jsp:include>
-<img width="80%" src="/day35/imgs/seoulmap.png">
-<jsp:include page="template/footer.jsp"></jsp:include>
+
 </body>
 </html>
-
-
-
-
-

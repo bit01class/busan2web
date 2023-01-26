@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!-- Set the project name, basedir and default target to be executed-->
+<project name="Ant-Create-War-Test" default="mainTarget" basedir=".">
+  <!-- Sets the properties here-->
+  <property name="src.dir" location="src" />
+  <property name="classes.dir" location="WebContent/WEB-INF/classes"/>
+  <property name="lib.dir" location="WebContent/WEB-INF/lib" />
+  <property name="dist.dir" location="dist" />
+ 
+  <!-- Target for deleting the existing directories-->
+  <target name="clean">
+    <delete dir="${classes.dir}" />
+    <delete dir="${lib.dir}" />
+  	<delete dir="${dist.dir}" />
+  </target>
+ 
+  <!-- Target for creating the new directories-->
+  <target name="makedir">
+    <mkdir dir="${classes.dir}" />
+    <mkdir dir="${lib.dir}" />
+  	<mkdir dir="${dist.dir}" />
+  </target>
+ 
+  <!-- Target for compiling the java code-->
+  <target name="compile" depends="clean, makedir">
+    <javac srcdir="${src.dir}" destdir="${classes.dir}">
+    </javac>	
+  </target>
+ 
+  <!-- Target for createing the deployable jar file  -->
+  <target name="war" depends="compile">
+    <war destfile="${dist.dir}\ROOT.war" 
+    	               webxml="WebContent/WEB-INF/web.xml">
+    	<classes dir="WebContent/WEB-INF/classes"/>
+    	<fileset dir="${dist.dir}"/>
+    	<lib dir="${lib.dir}"/>
+      <manifest>
+        <attribute name="AntCreateWar" value="ant.Create.War" />
+      </manifest>
+    </war>
+  </target>
+ 
+  <!-- Defualt target to run all targets-->
+  <target name="mainTarget" depends="compile, war">
+    <description>Main target</description>
+  </target>
+ 
+</project>

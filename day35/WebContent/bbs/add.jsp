@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:useBean id="login" class="com.bit.UserBean" scope="session"/>
+<%
+if(!login.isResult()){
+	response.sendRedirect("../login/login.jsp");
+	return;
+}
+%>
 <jsp:include page="../template/header.jsp"></jsp:include>
 <jsp:include page="../template/menu.jsp">
 	<jsp:param value=".." name="path"/>
@@ -20,7 +27,8 @@
 	</tr>
 	<tr>
 		<td>글쓴이</td>
-		<td><input type="text" name="id"></td>
+		<td><jsp:getProperty property="id" name="login"/>
+		<input type="hidden" name="id" value="<%=login.getId()%>"></td>
 	</tr>
 	<tr>
 		<td colspan="2">

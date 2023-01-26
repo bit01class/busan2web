@@ -7,16 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="template/header.jsp"></jsp:include>
-<jsp:include page="template/menu.jsp">
-	<jsp:param value="." name="path"/>
-</jsp:include>
-<img width="80%" src="/day35/imgs/seoulmap.png">
-<jsp:include page="template/footer.jsp"></jsp:include>
+<jsp:useBean id="login" class="com.bit.UserBean" scope="session"/>
+<jsp:setProperty property="result" name="login" value="false"/>
+<jsp:setProperty property="id" name="login" value=""/>
+<%
+response.sendRedirect("../");
+%>
 </body>
 </html>
-
-
-
-
-
