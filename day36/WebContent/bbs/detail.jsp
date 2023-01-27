@@ -33,7 +33,7 @@ try{
 }
 %>
 	<h1>상세페이지</h1>
-	<form action="bbs/insert.jsp">
+	<form action="bbs/update.jsp">
 	<table width="400" align="center">
 		<tr>
 			<td>empno</td>
@@ -69,9 +69,13 @@ try{
 		</tr>
 		<tr>
 			<td colspan="2">
-			<a href="./?title=bbs/detail&empno=<%=bean.getEmpno() %>&read=false">[수정]</a>
-			<input type="submit" value="입력">
+			<%if(!bean.isRead()){ %>
+			<input type="submit" value="수정">
 			<input type="reset" value="취소">
+			<%}else{ %>
+			<a href="./?title=bbs/detail&empno=<%=bean.getEmpno() %>&read=false">[수정]</a>
+			<a href="bbs/delete.jsp?empno=<%=bean.getEmpno() %>">[삭제]</a>
+			<%}%>
 			</td>
 		</tr>
 	</table>
