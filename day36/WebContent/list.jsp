@@ -26,7 +26,7 @@
 			BbsBean bean=new BbsBean();
 			bean.setNum(rs.getInt("num"));
 			bean.setSub(rs.getString("sub"));
-			
+			bean.setLvl(rs.getInt("lvl"));
 			list.add(bean);
 		}
 	}finally{
@@ -35,10 +35,15 @@
 		if(conn!=null)conn.close();
 	}
 	for(BbsBean bean:list){
+		String sp="";
+		for(int i=0; i<bean.getLvl(); i++){
+			sp+="&nbsp;&nbsp;&nbsp;&nbsp;";
+		}
+		if(bean.getLvl()!=0)sp+="└";
 	%>
 	<tr>
-		<td><%=bean.getNum() %></td>
-		<td><%=bean.getSub() %></td>
+		<td><a href="detail.jsp?num=<%=bean.getNum() %>"><%=bean.getNum() %></a></td>
+		<td><%=sp+bean.getSub() %></td>
 	</tr>
 	<%} %>
 </table>
