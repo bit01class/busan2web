@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%!
+Connection conn;
+Statement stmt;
+ResultSet rs;
+
+Connection getConnection(){
+	java.util.Map<String,String> env=null;
+	env=System.getenv();
+	String user=env.get("MYSQL_USER");
+	user=user==null?"scott":user;
+	String password=env.get("MYSQL_PW");
+	password=password==null?"tiger":password;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		if(conn==null || conn.isClosed()){
+			conn=DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/lecture"
+					,user,password
+					);
+		}
+	}catch(ClassNotFoundException e){
+		e.printStackTrace();
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+	return conn;
+}
+
+%>
