@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        var h1;
+        // h1=document.getElementsByName('h1')[0];
+        function myload(){
+            h1=document.getElementsByTagName('h1')[0];
+        }
+        window.onload=myload;
+        window.onbeforeunload=function(){
+            console.log('unload');
+        };
+        window.onabort=function(){};
+        window.onbeforeprint=function(){
+            console.log('before..');
+        };
+        window.onresize=function(){
+            console.log(window.innerWidth);
+        };
+        window.onscroll=function(){
+            console.log(window.innerHeight,window.pageYOffset);
+            // if(window.innerHeight-100<window.pageYOffset){
+            //     document.querySelector("body").innerHTML=
+            //     document.querySelector("body").innerHTML
+            //     +'<br>';
+            // }
+        };
+    </script>
+</head>
+<body>
+    <h1>dom level2 event</h1>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

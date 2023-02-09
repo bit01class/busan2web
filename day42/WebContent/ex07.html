@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css" rel="stylesheet">
+nav{}
+nav>ul{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+nav>ul>li{
+	float: left;
+	width: 100px;
+	background-color: gray;
+	text-align: center;
+	color:white;
+}
+nav>ul>li>ol{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	/* 	
+	height: 0px;
+	height: 140px;
+	 */
+}
+nav>ul>li>ol>li{}
+nav>ul>li>ol>li>a{
+	height: 35px;
+	display:block;
+	text-align: center;
+	background-color: gray;
+	line-height: 35px;
+	color:white;
+	text-decoration: none;
+}
+</style>
+<script type="text/javascript">
+var ul,lis;
+window.onload=function(){
+	ul=document.querySelector('ul');
+	lis=ul.querySelectorAll('ul>li');
+	var overCallback=function(e){
+		console.log(this, e.target);
+		this.querySelector('ol').style.height='140px';
+	};
+	var outCallback=function(e){
+		this.querySelector('ol').style.height='0px';
+	};
+	for(li of lis){
+		console.log(li.querySelector('ol'));
+		if(li.querySelector('ol')){
+			li.querySelector('ol').style.height='0px';
+			li.addEventListener('mouseover',overCallback);
+			li.addEventListener('mouseout',outCallback);
+		}
+		
+	}
+	
+	
+};
+</script>
+</head>
+<body>
+<nav>
+	<ul>
+		<li>menu1</li>
+		<li>menu2
+			<ol>
+				<li><a href="#">menu2-1</a></li>
+				<li><a href="#">menu2-2</a></li>
+				<li><a href="#">menu2-3</a></li>
+				<li><a href="#">menu2-4</a></li>
+			</ol>
+		</li>
+		<li>menu3
+			<ol>
+				<li><a href="#">menu3-1</a></li>
+				<li><a href="#">menu3-2</a></li>
+				<li><a href="#">menu3-3</a></li>
+				<li><a href="#">menu3-4</a></li>
+			</ol>
+		</li>
+		<li>menu4</li>
+	</ul>
+</nav>
+</body>
+</html>

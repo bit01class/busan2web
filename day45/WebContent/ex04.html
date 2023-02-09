@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        var bx1,bx2;
+        $(function(){
+            bx1=$('<ol/>')
+                .prependTo('div')
+                .html($('div>ul').html())
+                .bxSlider();
+            bx2=$('div>ul').bxSlider({
+                onSlideNext:function(a,b,c){
+                    bx1.goToSlide(c);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><img src="imgs/thumb01.jfif"/></li>
+            <li><img src="imgs/thumb02.jfif"/></li>
+            <li><img src="imgs/thumb03.jfif"/></li>
+            <li><img src="imgs/thumb04.jfif"/></li>
+            <li><img src="imgs/thumb05.jfif"/></li>
+            <li><img src="imgs/thumb06.jfif"/></li>
+        </ul>
+    </div>
+</body>
+</html>

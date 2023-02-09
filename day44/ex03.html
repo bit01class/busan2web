@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('input')
+                    .keydown(function(e){
+                        console.log('down',e.key,e.keyCode,$(this).val());
+                    })
+                    .keypress(function(e){
+                        console.log('press',e.key,e.keyCode,$(this).val());
+                    })
+                    .keyup(function(e){
+                        console.log('up',e.key,e.keyCode,$(this).val());
+                    });
+        });
+    </script>
+</head>
+<body>
+    <h1>key listener</h1>
+    <input/><button>btn</button>
+</body>
+</html>

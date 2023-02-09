@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var h1,btn,naver;
+window.onload=function(){
+	h1=document.querySelector('h1');
+	btn=document.querySelector('button');
+	naver=document.querySelector('a');
+	console.log('onload',h1.innerHTML);
+	btn.addEventListener('click',function(){
+		console.log('한번만 실행..');
+	},{once:true});
+	naver.addEventListener('click',function(e){
+		e.preventDefault(); 
+		// 엘리먼트의 기본기능 취소, 반드시 callback의 첫줄
+		console.log(e,'이동안할까?');
+	});
+};
+</script>
+</head>
+<body>
+	<h1>제목</h1>
+	<button>btn</button>
+	<a href="https://m.naver.com">naver</a>
+</body>
+</html>

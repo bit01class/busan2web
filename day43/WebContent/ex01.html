@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css" rel="stylesheet">
+table{
+	border-collapse: collapse;
+	width: 100%;
+}
+table,th,td{
+	border: 1px solid gray;
+}
+
+</style>
+<script type="text/javascript">
+var table,tbody,xhr;
+window.onload=function(){
+	table=document.querySelector('table');
+	tbody=table.querySelector("tbody");
+	xhr=new XMLHttpRequest();
+	init();
+};
+function getList(){
+	if(xhr.readyState==4&& xhr.status==200){
+		var data=xhr.responseText;
+		data=JSON.parse(data);
+		var msg="";
+		data.emp.forEach(function(ele,idx){
+			msg+="<tr>";
+			msg+="<td>"+ele.empno+"</td>";
+			msg+="<td>"+ele.ename+"</td>";
+			msg+="<td>"+ele.hiredate+"</td>";
+			msg+="<td>"+ele.sal+"</td>";
+			msg+="<td>"+ele.comm+"</td>";
+			msg+="</tr>";
+		});
+		tbody.innerHTML=msg;
+	}
+}
+function init(){
+	xhr.onreadystatechange=getList;
+	xhr.open('get','ex01.jsp');
+	xhr.send();
+}
+</script>
+</head>
+<body>
+<h1>JSON Parsing</h1>
+<table>
+	<thead>
+		<tr>
+			<th>empno</th>
+			<th>ename</th>
+			<th>hiredate</th>
+			<th>sal</th>
+			<th>comm</th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
+</body>
+</html>

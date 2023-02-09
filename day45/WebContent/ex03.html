@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        var arr=[];
+        var options={
+            //randomStart:true,
+            onSliderLoad:function(idx){
+                // loading때 단한번
+                //console.log(idx);
+                $('#big').html(arr[idx].html());
+            },
+            onSliderResize:function(a){
+                // 브라우저 사이즈 변경 - h -> v
+                //console.log(a);
+            },
+            onSlideBefore:function(nowEle,beforeIdx,afterIdx){},
+            onSlideAfter:function(nowEle,beforeIdx,afterIdx){
+                console.log('done',nowEle);
+            },
+            onSlideNext:function(nowEle,beforeIdx,afterIdx){
+                console.log('start',nowEle);
+                $('#big').html(arr[beforeIdx].html()+arr[afterIdx].html());
+                $('#big').height(300).find('img').css('position','absolute')
+                        .first().show().next().hide()
+                        .prev().fadeOut(1000).next().fadeIn(1000);
+            },
+            onSlidePrev:function(nowEle,beforeIdx,afterIdx){}
+        };
+        $(function(){
+
+            $('#bx>ul>li').each(function(idx,ele){
+                arr.push($(ele).clone());
+            });
+            $('#bx>ul').bxSlider(options);
+        });
+    </script>
+</head>
+<body>
+    <div id="big"></div>
+    <div id="bx">
+        <ul>
+            <li><img src="imgs/thumb01.jfif" alt=""></li>
+            <li><img src="imgs/thumb02.jfif" alt=""></li>
+            <li><img src="imgs/thumb03.jfif" alt=""></li>
+            <li><img src="imgs/thumb04.jfif" alt=""></li>
+            <li><img src="imgs/thumb05.jfif" alt=""></li>
+            <li><img src="imgs/thumb06.jfif" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

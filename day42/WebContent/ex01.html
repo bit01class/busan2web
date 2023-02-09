@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css" rel="stylesheet">
+.container{
+	margin: 0px auto;
+}
+.container>div{}
+#header{}
+#header>h1{
+	width: 205px;
+	height: 42px;
+	background-image: url("imgs/logo.jpg");
+	text-indent: -9999px;
+}
+#menu{
+	background-color: gray;
+}
+#menu>ul{
+	overflow: hidden;
+	list-style: none;
+	padding: 0px;
+	width: 400px;
+	margin: 0px auto;
+}
+#menu>ul>li{
+	width: 100px;
+	float: left;
+}
+#menu>ul>li>a{
+	height: 35px;
+	color:white;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	line-height: 35px;
+}
+#content{}
+#content .carousel{
+	width: 100px;
+	height: 100px;
+	position: relative;
+	margin: auto;
+}
+#content .carousel>div{
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	margin-left: 30px;
+}
+#content .carousel>a{
+	width: 30px;
+	height: 100px;
+	display: block;
+	background-color: gray;
+	position: absolute;
+	top: 0px;
+	text-align: center;
+	line-height: 100px;
+	text-decoration: none;
+	color:white;
+	font-size: 40px;
+}
+#content .carousel>a:nth-child(1){
+	left:0px;
+}
+#content .carousel>a:nth-child(3){
+	left: 130px;
+}
+#content .carousel ul{
+	overflow: hidden;
+	list-style: none;
+	width: 600px;
+	height:100px;
+	padding: 0px;
+	margin: 0px;
+}
+#content .carousel ul>li{
+	float: left;
+}
+#content .carousel ul>li>a{}
+#content .carousel ul>li>a>img{
+	width: 100px;
+}
+#footer{
+	clear: both;
+}
+</style>
+<script type="text/javascript">
+	var carousel,prv,nxt,ul,div,nxtTime;
+	window.onload=function(){
+		carousel=document.querySelector('.carousel');
+		div=document.createElement('div');
+		ul=carousel.querySelector('ul');
+		div.appendChild(ul);
+		ul.style.marginLeft='0px';
+		
+		prv=document.createElement('a');
+		prv.appendChild(document.createTextNode("<"));
+		prv.href="#";
+		
+		nxt=document.createElement('a');
+		nxt.appendChild(document.createTextNode('>'));
+		nxt.href='#';
+		
+		carousel.appendChild(prv);
+		carousel.appendChild(div);
+		carousel.appendChild(nxt);
+		prv.onclick=function(e){
+			clearTimeout(nxtTime);
+			var x=parseInt(ul.style.marginLeft);
+			if(x==0) x=-500;
+			else x+=100;
+			
+			ul.style.marginLeft=x+'px';
+			nxtTime=setTimeout(nextCallback,3000);
+			return false;
+		};
+		nxt.onclick=function(e){
+			nextCallback();
+			return false;
+		};
+		nxtTime=setTimeout(nextCallback,3000);
+	};
+	function nextCallback(){
+		clearTimeout(nxtTime);
+		var x=parseInt(ul.style.marginLeft)-100;
+		if(x==-600) x=0;
+		ul.style.marginLeft=x+'px';
+		nxtTime=setTimeout(nextCallback,3000);
+	}
+</script>
+</head>
+<body>
+<div class="container">
+	<div id="header">
+		<h1>비트교육센터</h1>
+	</div>
+	<div id="menu">
+		<ul>
+			<li><a href="#">menu</a></li>
+			<li><a href="#">menu</a></li>
+			<li><a href="#">menu</a></li>
+			<li><a href="#">menu</a></li>
+		</ul>
+	</div>
+	<div id="content">
+		<div class="carousel">
+			<ul>
+				<li><a href="#"><img src="imgs/thumb01.jfif"/></a></li>
+				<li><a href="#"><img src="imgs/thumb02.jfif"/></a></li>
+				<li><a href="#"><img src="imgs/thumb03.jfif"/></a></li>
+				<li><a href="#"><img src="imgs/thumb04.jfif"/></a></li>
+				<li><a href="#"><img src="imgs/thumb05.jfif"/></a></li>
+				<li><a href="#"><img src="imgs/thumb06.jfif"/></a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="footer">
+		<p>Copyright by bitacademy co.ltd. All rights reserved. </p>
+	</div>
+</div>
+</body>
+</html>

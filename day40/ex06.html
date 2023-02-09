@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        var obj1={"key1":"val1"};
+        obj1.key2='val2';
+        var f=function(a){
+            // 메서드
+            console.log(obj1==this);
+            console.log(window==this);
+        };
+        obj1.key3=f;
+
+        function newInstance(){
+            return new Object();
+        }
+
+        var arr=[];
+        var obj2=newInstance();
+        var obj3=newInstance();
+        arr.push(obj2);
+        arr.push(obj3);
+        arr.push(newInstance());
+
+        obj2.setKey1=function(a){
+            this.key1=a;
+        };
+        obj2.getKey1=function(){
+            return this.key1;
+        };
+        obj2.setKey1("item1");
+        console.log(obj2.getKey1());
+        console.log(arr);
+
+        // obj1.key3();
+        //f();
+        // for(key in obj1){
+        //     if(typeof obj1[key]=='function')
+        //         obj1[key]();
+        //     else
+        //         console.log(obj1[key]);
+        // }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

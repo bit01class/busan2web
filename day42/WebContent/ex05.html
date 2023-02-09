@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css" rel="stylesheet">
+div{
+	width: 300px;
+	height: 300px;
+	background-color: lime;
+}
+div>div{
+	width: 200px;
+	height: 200px;
+	background-color: aqua;
+}
+div>div>div{
+	width:100px;
+	height: 100px;
+	background-color: red;
+}
+</style>
+<script type="text/javascript">
+var div1,div2,div3;
+window.onload=function(){
+	div1=document.querySelector('div');
+	div2=document.querySelector('div>div');
+	div3=document.querySelector('div>div>div');
+	
+	div1.addEventListener('click',function(e){
+		//e.stopPropagation();
+		console.log('box1');
+	});
+	div2.addEventListener('click',function(e){
+		e.stopPropagation();
+		console.log('box2');
+	});
+	div3.addEventListener('click',function(e){
+		//e.stopPropagation();
+		console.log('box3');
+	});
+};
+</script>
+</head>
+<body>
+<div>
+	<div>
+		<div></div>
+	</div>
+</div>
+</body>
+</html>

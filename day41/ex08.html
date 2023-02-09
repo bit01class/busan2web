@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        #carousel{}
+        #carousel>ul{
+            list-style: none;
+            padding: 0px;
+            width: 600px;
+            animation-name: ani1;
+            animation-duration: 6s;
+            animation-timing-function: linear;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        }
+        #carousel>ul>li{
+            float: left;
+        }
+        #carousel>ul>li>img{
+            width: 100px;
+        }
+        @keyframes ani1 {
+            from{
+                margin-left: 0px;
+            }
+            to{
+                margin-left: -500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="carousel">
+        <ul>
+            <li><img src="imgs/thumb01.jfif" alt=""></li>
+            <li><img src="imgs/thumb02.jfif" alt=""></li>
+            <li><img src="imgs/thumb03.jfif" alt=""></li>
+            <li><img src="imgs/thumb04.jfif" alt=""></li>
+            <li><img src="imgs/thumb05.jfif" alt=""></li>
+            <li><img src="imgs/thumb06.jfif" alt=""></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var carousel = document.getElementById('carousel');
+        var ul=carousel.firstElementChild;
+        ul.style.animationPlayState='paused';
+        var running=function(){
+            ul.style.animationPlayState='running';
+            setTimeout(paused,1000);
+        };
+        var paused=function(){
+            ul.style.animationPlayState='paused';
+            setTimeout(running,1000);
+        };
+        running();
+
+    </script>
+</body>
+</html>

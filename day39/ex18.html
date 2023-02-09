@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        var a=1111;
+        var b=new Number(1111);
+        var c=new Number(1111);
+        var d='1111';
+        var e="aaaa";
+        var f=new String('aaaa');
+        var g=new String('aaaa');
+        console.log(e==f,f==g);
+        console.log(e===f,f===g);
+        var h=true;
+        var j=new Boolean(true);
+        var x=['item1'];
+        var y=new Array(5);
+        x.push('item2');
+        x.push('item3');
+        x.push('item4');
+        // while(x.length){
+        //     // console.log(x.shift());
+        //     console.log(x.pop());
+        // }
+        //x.reverse();
+        for(z in x)
+            console.log(z,x[z]);
+        for(z of x)
+            console.log(z);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

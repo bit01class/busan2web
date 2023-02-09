@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        div{
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+        }
+        div>div{
+            width: 300px;
+            height: 300px;
+            margin: 100px;
+            background-color: burlywood;
+        }
+    </style>
+    <script type="text/javascript">
+        var div1,div2;
+        window.onload=function(){
+            div1=document.querySelector('div');
+            div2=document.querySelector('div>div');
+            div1.onmouseenter=function(){
+                console.log('마우스 위로');
+            };
+            div1.onmouseleave=function(){
+                console.log("마우스 밖으로");
+            };
+            div2.onmouseenter=function(){
+                console.log('마우스 위로2');
+            };
+            div2.onmouseleave=function(){
+                console.log("마우스 밖으로2");
+            };
+        };
+    </script>
+</head>
+<body>
+    <div><div></div></div>
+</body>
+</html>

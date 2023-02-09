@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="carousel"></div>
+    <script type="text/javascript">
+        var arr=[];
+        var carousel=document.lastElementChild
+                    .lastElementChild.firstElementChild;
+        for(var i=0; i<6; i++){
+            var img=document.createElement('img');
+            img.src="imgs/big0"+(i+1)+".jfif";
+            arr.push(img);
+        }
+        var getFirst=function(){
+            carousel.appendChild(arr.shift());
+        };
+        var loop=function(){
+            var before=carousel.removeChild(
+                carousel.firstElementChild
+            );
+            arr.push(before);
+            getFirst();
+        };
+        setInterval(loop,3000);
+        getFirst();
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        var obj1=new Object();
+        var obj2={"key1":"val1","key2":"val2"};
+        console.log(obj2['key1']);
+        console.log(obj2.key2);
+        obj1['key1']='val1';
+        obj1.key2='val2';
+        obj1.key3=[1,3,5,7];
+        obj1.obj2=obj2;
+
+        obj1.key3=null;
+        
+        for(key in obj1){
+            console.log(key,typeof key, obj1[key]);
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        #carousel img{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="carousel"></div>
+    <script type="text/javascript">
+        var arr=[
+            '<img src="imgs/big01.jfif"/>',
+            '<img src="imgs/big02.jfif"/>',
+            '<img src="imgs/big03.jfif"/>',
+            '<img src="imgs/big04.jfif"/>',
+            '<img src="imgs/big05.jfif"/>',
+            '<img src="imgs/big06.jfif"/>',
+        ];
+        var carousel=document.getElementById('carousel');
+        cnt=0;
+        carousel.innerHTML=
+        '<img src="imgs/big01.jfif"/>'
+        +'<img src="imgs/big02.jfif"/>'
+        +'<img src="imgs/big03.jfif"/>';
+
+        var loop=function(){
+            cnt++;
+            if(cnt==6)cnt=0;
+            var img1=arr[cnt];
+            cnt++;
+            if(cnt==6)cnt=0;
+            var img2=arr[cnt];
+            cnt++;
+            if(cnt==6)cnt=0;
+            var img3=arr[cnt];
+            carousel.innerHTML=img1+img2+img3;
+            cnt--;
+            if(cnt--==-1)cnt=0;
+        };
+        setInterval(loop,3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <h1>DOM Node</h1> 
+   <p>node 접근을 통해 엘리먼트를 선택 제어</p>
+   <ul>
+    <li>item1</li>
+    <li>item2</li>
+    <li>item3</li>
+    <li>item4</li>
+    <li>item5</li>
+   </ul>
+   <input/><button onclick="add();">입력</button>
+   <script type="text/javascript">
+    
+    var ul=document.firstElementChild.lastElementChild.firstElementChild.nextElementSibling.nextElementSibling;
+    var input=ul.nextElementSibling;
+    function add(){
+        var li6=document.createElement('li');
+        var msg=document.createTextNode(input.value);
+        li6.appendChild(msg);
+        ul.appendChild(li6);
+        input.value="";
+    }
+       
+   </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        // callback
+        function func01(){
+            console.log('collback');
+        }
+
+        var f=func01;
+
+        function func02(a){
+            // ~~~~~~~
+            a();
+        }
+        func02(f);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

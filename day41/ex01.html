@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        .container{
+            width: 600px;
+            margin: 0px auto;
+        }
+        .container>#menu{
+            background-color: gray;
+            overflow: hidden;
+        }
+        .container>#menu>ul{
+            list-style: none;
+            padding: 0px;
+            width: 400px;
+            margin: 0px auto;
+        }
+        .container>#menu>ul>li{
+            float: left;
+            width: 100px;
+        }
+        .container>#menu>ul>li>a{
+            display: block;
+            height: 35px;
+            color: white;
+            text-align: center;
+            line-height: 35px;
+            text-decoration: none;
+        }
+        .container>#menu>ul>li>a:hover{
+            text-decoration: overline;
+        }
+
+        .carousel{
+            margin: 0px auto;
+            overflow: hidden;
+        }
+        .carousel>ul{
+            width: 600px;
+            height: 200px;
+            list-style:none;
+            padding: 0px;
+            overflow: hidden;
+        }
+        .carousel>ul>li{
+            float: left;
+        }
+        .carousel>ul>li>img{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="header">
+            <h1>비트교육센터</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="#">MENU</a></li>
+                <li><a href="#">MENU</a></li>
+                <li><a href="#">MENU</a></li>
+                <li><a href="#">MENU</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div class="carousel">
+                <ul>
+                    <li><img src="imgs/thumb01.jfif" alt=""></li>
+                    <li><img src="imgs/thumb02.jfif" alt=""></li>
+                    <li><img src="imgs/thumb03.jfif" alt=""></li>
+                    <li><img src="imgs/thumb04.jfif" alt=""></li>
+                    <li><img src="imgs/thumb05.jfif" alt=""></li>
+                    <li><img src="imgs/thumb06.jfif" alt=""></li>
+                </ul>
+            </div>
+        </div>
+        <div id="footer">
+            Copyright by bitacademy co.ltd. All rights reserved.
+        </div>
+    </div>
+    <script type="text/javascript">
+        var carousel=document
+                    .lastElementChild
+                    .lastElementChild
+                    .firstElementChild
+                    .lastElementChild
+                    .previousElementSibling
+                    .firstElementChild;
+        function callback(){
+            carousel.firstElementChild.appendChild(
+                                carousel.firstElementChild
+                                        .firstElementChild
+                            );
+            setTimeout(callback,3000);
+        }
+        setTimeout(callback,3000);
+    </script>
+</body>
+</html>

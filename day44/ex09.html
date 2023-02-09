@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        div{
+            background-color: white;
+        }
+        div>img{
+            width: 300px;
+            height: 300px;
+            
+        }
+        h1+div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            margin-left: -200px;
+            margin-top: -200px;
+            border: 300px solid white;
+            background-color: rgba(0,0,0,0);
+        }
+
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(document).mousemove(function(e){
+                console.log(e.pageX,e.pageY);
+                $("h1+div").css(
+                    {
+                        left:e.pageX-150+"px",
+                        top:e.pageY-150+"px"
+                    }
+                );
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>css</h1>
+    <div></div>
+    <div>
+        <img src="imgs/thumb01.jfif"/>
+    </div>
+</body>
+</html>

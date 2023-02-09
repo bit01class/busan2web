@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        div{
+            width: 300px;
+            background-color: aqua;
+        }
+        div>div{
+            width: 200px;
+            background-color: beige;
+        }
+        div>div>div{
+            width: 100px;
+            background-color: coral;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            //console.log($('button').length);
+            $('button')
+                .eq(0).click(function(e){
+                    console.log('클릭',e.target,this);
+                        }).mousedown(function(){
+                            console.log('down');
+                        }).mouseup(function(){
+                            console.log('up');
+                        })
+                .next().dblclick(function(){
+                    console.log('더블클릭');
+                })
+                .next().mouseenter(function(){
+                            console.log('위로');
+                        }).mouseleave(function(){
+                            console.log('밖으로');
+                        })
+                .next().mouseover(function(){
+                            console.log('위로');
+                        }).mouseout(function(){
+                            console.log('밖으로');
+                        })
+                .next().hover(function(){
+                    console.log('올라가거나 나갈때');
+                });
+            $('div').mouseenter(function(){
+                            console.log('위로');
+                        }).mouseleave(function(){
+                            console.log('밖으로');
+                        });
+            $('a').click(function(e){
+                e.preventDefault();
+                console.log('페이지이동 x',e);
+                //return false;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>마우스 이벤트</h1>
+    <a href="https://m.naver.com">naver</a>
+    <button>btn1</button>
+    <button>btn2</button>
+    <button>btn3</button>
+    <button>btn4</button>
+    <button>btn5</button>
+    <div>
+        box1
+        <div>
+            box2
+            <div>
+                box3
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css" rel="stylesheet">
+form input+span{
+	color:red;
+	font-style: italic;
+}
+</style>
+<script type="text/javascript">
+var form,id,pw,re,sel,item0,span;
+window.onload=function(){
+	form=document.querySelector('form');
+	id=form.querySelectorAll('input')[0];
+	pw=form.querySelectorAll('input')[1];
+	re=form.querySelectorAll('input')[2];
+	sel=form.querySelector('select');
+	item0=sel.querySelector('option');
+	sel.onfocus=function(){
+		sel.style.backgroundColor='white';
+		//if(item0)sel.removeChild(item0);
+		//sel.innerHTML="<option>item1</option><option>item2</option><option>item3</option><option>item4</option>";
+	};
+	form.onsubmit=function(){
+		/* if(id.parentElement.querySelector('span'))
+			id.parentElement.removeChild(span);
+		if(pw.parentElement.querySelector('span'))
+			pw.parentElement.removeChild(span);
+		if(re.parentElement.querySelector('span'))
+			re.parentElement.removeChild(span); */
+		
+		for(ele of form.querySelectorAll('div')){
+			span=ele.querySelector('span');
+			if(span) span.parentElement.removeChild(span);		
+		}
+		
+		if(id.value==''){
+			span=document.createElement('span');
+			span.appendChild(document.createTextNode('아이디입력'));
+			id.parentElement.appendChild(span);
+			return false;
+			}
+		if(pw.value==''){
+			span=document.createElement('span');
+			span.appendChild(document.createTextNode('패스워드입력'));
+			pw.parentElement.appendChild(span);
+			return false;
+			}
+		if(re.value==''){
+			span=document.createElement('span');
+			span.appendChild(document.createTextNode('패스워드재입력'));
+			re.parentElement.appendChild(span);
+			return false;
+			}
+		if(pw.value!=re.value){
+			span=document.createElement('span');
+			span.appendChild(document.createTextNode('패스워드불일치'));
+			re.parentElement.appendChild(span);
+		return false;
+		}
+		if(sel.value=='done'){
+			sel.style.backgroundColor='red';
+			//sel.focus();
+		return false;
+		}
+	};
+};
+</script>
+</head>
+<body>
+	<h1>join</h1>
+	<form action="ex02.jsp">
+		<div>
+			<label for="id">id</label>
+			<input type="text" name="id" id="id" />
+		</div>
+		<div>
+			<label for="pw">pw</label>
+			<input type="text" name="pw" id="pw" />
+		</div>
+		<div>
+			<label for="re">re</label>
+			<input type="text" id="re" />
+		</div>
+		<div>
+			<label for="name">name</label>
+			<input type="text" name="name" id="name" />
+		</div>
+		<div>
+			<select name="sel">
+				<option value="done" selected="selected">선택해주세요</option>
+				<option>item1</option>
+				<option>item2</option>
+				<option>item3</option>
+				<option>item4</option>
+			</select>
+		</div>
+		<div>
+			<button type="submit">전송</button>
+			<button type="reset">취소</button>
+		</div>
+	</form>
+</body>
+</html>

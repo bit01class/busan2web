@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        div{width: 50px; height: 50px; background-color: red;}
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            console.log('animate start...');
+            $('div')
+                .click(function(){
+                    //for(var i=0; i<=$(this).queue().length; i++)
+                    // $(this).clearQueue().stop();
+                    // $(this).finish();
+                    $(this).dequeue();
+                })
+                .animate({marginLeft:'300px'},3000,'linear')
+                .delay(1000)
+                // .dequeue()
+                .animate({marginTop:'300px'},3000,'linear')
+                .animate({marginLeft:'0px'},3000,'linear')
+                .animate({marginTop:'0px'},3000,'linear');
+            console.log('animate end?');
+        });
+    </script>
+</head>
+<body>
+    <div>box</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('form').submit(function(e){
+                console.log('submit 취소');
+
+                return false;
+            });
+            
+            $('input').eq(0).focusin(function(){
+                console.log('focus');
+                //$(this).val("");
+                $(this).select();
+            }).focusout(function(){
+                console.log($(this).val());
+                if($(this).val().length<4){
+                    $(this).css({border:'1px solid red'});
+                }else{
+                    $(this).css({border:'1px solid rgb(118, 118, 118)'});
+                }
+            });
+            $('input').eq(1).keyup(function(){
+                console.log('up',$(this).val().length);
+                if($(this).val().length>4){
+                    //$('input').eq(2).focus();
+                    $(this).parent().next().find('input').focus();
+                }
+            });
+            $('input').eq(2).select(function(e){
+                console.log($(this).val(),e);
+            });
+            $('select').add($(':radio')).change(function(){
+                console.log($(this).val());
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>form event</h1>
+    <form action="http://naver.com">
+        <div>
+            <label>id</label>
+            <input type="text" value="디폴트값">
+        </div>
+        <div>
+            <label>pw</label>
+            <input type="password">
+        </div>
+        <div>
+            <label>num</label>
+            <input type="text">
+        </div>
+        <div>
+            <input type="checkbox" value="ch1">
+            <label>item1</label>
+            <input type="checkbox" value="ch2">
+            <label>item2</label>
+            <input type="checkbox" value="ch3">
+            <label>item3</label>
+        </div>
+        <div>
+            <input type="radio" name="ra">
+            <label>item1</label>
+            <input type="radio" name="ra">
+            <label>item2</label>
+            <input type="radio" name="ra">
+            <label>item3</label>
+        </div>
+        <div>
+            <select>
+                <option>item1</option>
+                <option>item2</option>
+                <option>item3</option>
+                <option>item4</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="submit1">
+            <input type="reset" value="reset1">
+            <button>submit2</button>
+            <button type="submit">submit3</button>
+            <button type="reset">reset2</button>
+        </div>
+    </form>
+    <button>out</button>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+       div{
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+       } 
+       div>div{
+        background-color: red;
+        width: 50px;
+        height: 50px;
+       }
+       #target1{
+        position: fixed;
+        left: 300px;
+        top: 200px;
+       }
+       #target2{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+       }
+    </style>
+</head>
+<body>
+    <div>box</div>
+    <div id="target1">
+        outter box
+        <div id="target2">inner box</div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

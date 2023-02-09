@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var xhr;
+window.onload=function(){
+	xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4&&xhr.status==200){
+			console.log(xhr.responseXML);
+		}
+	};
+	xhr.open('get','ex11.xml');
+	xhr.send();
+};
+</script>
+</head>
+<body>
+
+</body>
+</html>

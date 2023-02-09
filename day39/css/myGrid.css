@@ -1,0 +1,61 @@
+        .containerw .grid1,.containerw .grid2,.containerw .grid3,.containerw .grid4,
+        .containerw .grid5,.containerw .grid6,.containerw .grid7,.containerw .grid8,
+        .containerw .grid9,.containerw .grid10,.containerw .grid11,.containerw .grid12,
+        .container .grid1,.container .grid2,.container .grid3,.container .grid4,
+        .container .grid5,.container .grid6,.container .grid7,.container .grid8,
+        .container .grid9,.container .grid10,.container .grid11,.container .grid12{
+            float: left;
+        }
+        .row{
+            clear: both;
+        }
+        @media screen and (max-width:1199px) {
+            .container{
+                width: 100%;
+            }
+            .container .mgrid1{width: 8.333%;}
+            .container .mgrid2{width: 16.666%;}
+            .container .mgrid3{width: 25%;}
+            .container .mgrid4{width: 33.333%;}
+            .container .mgrid5{width: 41.666%;}
+            .container .mgrid6{width: 50%;}
+            .container .mgrid7{width: 58.33%;}
+            .container .mgrid8{width: 66.666%;}
+            .container .mgrid9{width: 75%;}
+            .container .mgrid10{width: 83.333%;}
+            .container .mgrid11{width: 91.666%;}
+            .container .mgrid12{width: 100%;}
+        }
+        @media screen and (min-width:1200px) {
+            .container{
+                width: 1200px;
+                margin: 0px auto;
+            }
+            .containerw{
+                width: 100%;
+            }
+            .containerw .grid1{width: 8.333%;}
+            .containerw .grid2{width: 16.666%;}
+            .containerw .grid3{width: 25%;}
+            .containerw .grid4{width: 33.333%;}
+            .containerw .grid5{width: 41.666%;}
+            .containerw .grid6{width: 50%;}
+            .containerw .grid7{width: 58.33%;}
+            .containerw .grid8{width: 66.666%;}
+            .containerw .grid9{width: 75%;}
+            .containerw .grid10{width: 83.333%;}
+            .containerw .grid11{width: 91.666%;}
+            .containerw .grid12{width: 100%;}
+            .container .grid1{width: 100px;}
+            .container .grid2{width: 200px;}
+            .container .grid3{width: 300px;}
+            .container .grid4{width: 400px;}
+            .container .grid5{width: 500px;}
+            .container .grid6{width: 600px;}
+            .container .grid7{width: 700px;}
+            .container .grid8{width: 800px;}
+            .container .grid9{width: 900px;}
+            .container .grid10{width: 1000px;}
+            .container .grid11{width: 1100px;}
+            .container .grid12{width: 1200px;}
+        }

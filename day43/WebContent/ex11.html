@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        ul{
+            list-style: none;
+            margin: 0px;padding: 0px;
+        }
+        ul>li{float: left;}
+        ul>li>img{width: 100px;}
+        div{
+            /* width: 300px;
+            height: 100px;
+            overflow: hidden;
+            margin: 0px auto; */
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        var cnt=0;
+        $(function(){
+            //$('ul').css('margin-left',(cnt-=100));
+            //$('ul').children().first().clone().appendTo('ul')
+            //.end().end().next().clone().appendTo('ul');
+            //setInterval(loop,3000);
+        });
+        function loop(){
+            cnt++;
+            if(cnt==6) cnt=0;
+            $('ul').css('margin-left',-100*cnt);
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><img src="imgs/thumb01.jfif" alt=""></li>
+            <li><img src="imgs/thumb02.jfif" alt=""></li>
+            <li><img src="imgs/thumb03.jfif" alt=""></li>
+            <li><img src="imgs/thumb04.jfif" alt=""></li>
+            <li><img src="imgs/thumb05.jfif" alt=""></li>
+            <li><img src="imgs/thumb06.jfif" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

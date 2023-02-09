@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        p{
+            text-indent: 100px;
+        }
+        @media print{
+            h1{
+                font-weight: normal;
+            }
+        }
+        @media screen and (max-width: 600px ) {
+            body{
+                background-color: black;
+                color:white;
+            }
+        }
+        @media screen and (min-width: 601px) and (max-width: 1023px) {
+            body{
+                background-color: gray;
+            }
+        }
+        @media screen and (min-width: 1024px){
+            body{
+                background-color: yellow;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>제목</h1>
+    <p>내용</p>
+</body>
+</html>

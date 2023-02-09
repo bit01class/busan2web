@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+        div:nth-child(3){
+            display: none;
+            /* position: absolute or fixed;
+            left: -999px;top: -999px; */
+        }
+        div:nth-child(5){
+            visibility: hidden;
+        }
+        div:nth-child(7){
+            opacity: 0;
+        }
+        div:nth-child(9){
+            margin-left: -999px;
+        }
+        div:nth-child(2){
+            border-radius: 50px 0px 20px 10px;
+        }
+        body{
+            background-image: url("imgs/logo.jpg");
+            background-repeat: no-repeat;
+            background-position: 50% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+</head>
+<body>
+    <h1>숨기기</h1>
+    <div>box1</div>
+    <div>box2</div>
+    <div>box3</div>
+    <div>box4</div>
+    <div>box5</div>
+    <div>box6</div>
+    <div>box7</div>
+    <div>box8</div>
+    <div>box9</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">
+        <h1>비트교육센터</h1>
+    </div>
+    <div id="menu">
+        <a href="#">menu</a>
+        <a href="#">menu</a>
+        <a href="#">menu</a>
+        <a href="#">menu</a>
+    </div>
+    <div id="content">
+        <div class="target">
+            <img src="imgs/big01.jfif"/>
+            <img src="imgs/big02.jfif"/>
+            <img src="imgs/big03.jfif"/>
+            <img src="imgs/big04.jfif"/>
+            <img src="imgs/big05.jfif"/>
+            <img src="imgs/big06.jfif"/>
+        </div>
+        <div class="carousel"></div>
+    </div>
+    <div id="footer">
+        Copyright by bitacademy co.ltd. All rights reserved.
+    </div>
+    <script type="text/javascript">
+        var arr=[];
+        var target=document.lastElementChild
+                            .lastElementChild
+                            .firstElementChild
+                            .nextElementSibling
+                            .nextElementSibling
+                            .firstElementChild;
+        var size=target.childElementCount;
+        for(var i=0; i<size; i++){
+            arr.push(target.removeChild(target.firstElementChild));
+        }
+        var carousel=target.nextElementSibling;
+        for(img of arr){
+            img.style.width='300px';
+        }
+        carousel.appendChild(arr.shift());
+        var callback=function(){
+            var before=carousel.removeChild(
+                            carousel.firstElementChild);
+            arr.push(before);
+            carousel.appendChild(arr.shift());
+        };
+        setInterval(callback,3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        ul{
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+            width: 1200px;
+        }
+        ul>li{
+            float: left;
+        }
+        ul>li>img{
+            width: 200px;
+        }
+        /* #carousel{
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        } */
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        var su=0,cnt=1;
+        window.onload=function(){
+            // cnt=3;
+            // $("#carousel").css("width",200*cnt);
+            su=-1;
+            nextImg();
+        };
+        function nextImg(){
+            if(su++>=6-cnt)su=0;
+            //     $('ul').css("margin-left",-200*su);
+            //$('img').css('width',function(idx,val){
+            $('img').width(function(idx,val){
+                console.log(val);
+                if(idx==su)return 200;
+                return 0;
+            });
+            setTimeout(nextImg,3000);
+        }
+
+    </script>
+</head>
+<body>
+    <div id="carousel">
+        <ul>
+            <li><img src="imgs/thumb01.jfif" alt=""></li>
+            <li><img src="imgs/thumb02.jfif" alt=""></li>
+            <li><img src="imgs/thumb03.jfif" alt=""></li>
+            <li><img src="imgs/thumb04.jfif" alt=""></li>
+            <li><img src="imgs/thumb05.jfif" alt=""></li>
+            <li><img src="imgs/thumb06.jfif" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        li{
+            background-image: url("imgs/car.jfif");
+            background-repeat: no-repeat;
+            background-size: 100px;
+            background-position: 100%;
+            width: 100px;
+            height: 50px;
+            text-indent: -999px;
+            transition-duration: 5s;
+            /* transition-delay: 1s; */
+        }
+        li:nth-child(1){
+            transition-timing-function: linear;
+        }
+        li:nth-child(2){
+            transition-timing-function: ease-in;
+        }
+        li:nth-child(3){
+            transition-timing-function: ease-out;
+        }
+        li:nth-child(4){
+            transition-timing-function: ease-in-out;
+        }
+        li:hover{
+            width: 100%;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+    </ul>
+</body>
+</html>

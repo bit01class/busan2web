@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style rel="stylesheet" type="text/css">
+/* 
+선택자의 우선순위
+인라인 > 아이디 > 클래스 > 태그(직접) > (간접)
+동일 순위 마지막 작성된 스타일이 적용
+*/
+/* 
++ > child , nbsp ~ not
+*/
+a:focus,a:visited{
+    color: blue;
+}
+a:hover,a:active{
+    color: red;
+}
+
+        </style>
+    </head>
+    <body>
+        <h1>선택자</h1>
+        <p>
+            <a href="#">link1</a>
+            <a href="#">link2</a>
+            <a href="bit.com">link3</a>
+        </p>
+        <h2>선택자의 종류</h2>
+        <ul>
+            <li>태그선택자</li>
+            <li>클래스선택자</li>
+            <li>아이디선택자</li>
+        </ul>
+        <div>
+            <h2>선택자를 통한 엘리먼트선택</h2>
+            <ol>
+                <li>item1</li>
+                <li id="i2">item2</li>
+                <li id="i3" class="cl1">item3</li>
+                <li class="cl1">item4</li>
+                <li>item5</li>
+                <li>item6</li>
+                <li>item7</li>
+                <li>item8</li>
+                <li>item9</li>
+                <li>item10</li>
+                <li>item11</li>
+            </ol>
+        </div>
+    </body>
+</html>

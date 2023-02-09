@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css" rel="stylesheet">
+div{
+	width:200px;
+	height:100px;
+	background-color: aqua;
+}
+div>div{
+	width:100px;
+	height:300px;
+	background-color: red;
+}
+</style>
+<script type="text/javascript">
+var box1,box2;
+window.onload=function(){
+	box1=document.querySelector('div');
+	box2=box1.querySelector('div');
+	box2.style.height='0px';
+	/* box1.addEventListener('mouseover',function(e){
+		e.stopPropagation();
+		console.log('box1 click');
+		if(box2.style.height=='0px')
+			box2.style.height='300px';
+		else
+			box2.style.height='0px';
+	},true); */
+	box1.addEventListener('mouseover',function(e){
+		e.stopPropagation();
+		box2.style.height='300px';
+	},true);
+	box1.addEventListener('mouseout',function(e){
+		e.stopPropagation();
+		box2.style.height='0px';
+	},true);
+	box2.addEventListener('mouseover',function(e){
+		e.stopPropagation();
+		console.log('box2 over');
+	},true);
+
+	box2.addEventListener('mouseout',function(e){
+		e.stopPropagation();
+		console.log('box2 out');
+	},true);
+};
+</script>
+</head>
+<body>
+<div>
+	<div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        var input,btn,select;
+        window.onload=function(){
+            input=document.querySelector('input');
+            btn=document.querySelector('button');
+            select=document.querySelector('select');
+            btn.onclick=function(){
+                console.log('클릭');
+            };
+            input.onfocus=function(){
+                console.log('포커스 얻음');
+            };
+            input.onblur=function(){
+                console.log('포커스 잃음');
+            };
+            input.onchange=function(){
+                console.log('change...');
+            };
+            input.focus();
+            btn.focus();
+        };
+    </script>
+</head>
+<body>
+    <input/><button>btn</button>
+    <select>
+        <option>item1</option>
+        <option>item2</option>
+        <option>item3</option>
+        <option>item4</option>
+    </select>
+</body>
+</html>

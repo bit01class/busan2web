@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var btn,btn2,btn3,btn4;
+window.onload=function(){
+	btn=document.querySelector("button");
+	btn2=document.querySelector("button+button");
+	btn3=document.querySelector("button+button+button");
+	btn4=document.querySelector("button+button+button+button");
+	var callback1=function(){
+		console.log('level3 event..');
+	};
+	var callback2=function(){alert('click');};
+	/* 
+	btn.onclick=function(){
+		console.log('level2 event...');
+	};
+	*/
+	btn.onclick=function(){console.log('level2 event...');};
+	btn.onclick=false;
+	btn.addEventListener('click',callback1);
+	btn2.addEventListener('click',function(){
+		btn.removeEventListener('click',callback1);
+	});
+	btn3.addEventListener('click',function(){
+		btn.addEventListener('click',callback1);
+	});
+	var callback4=function(){
+		console.log('1번');
+		btn4.removeEventListener('click',callback4);
+	};
+	btn4.addEventListener('click',callback4);
+};
+</script>
+</head>
+<body>
+	<h1>DOM level3 event</h1>
+	<button>btn</button>
+	<button>off</button>
+	<button>on</button>
+	<button>one</button>
+</body>
+</html>

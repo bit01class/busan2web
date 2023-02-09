@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        var person = {
+            fullName: function(a,b) {
+                return a + " " + b;
+            }
+        };
+
+        var member = {
+        firstName:"김",
+        lastName: "개똥"
+        };   
+
+        var fullName = person.fullName.apply(member,["aaa","bbb"]);
+        console.log(fullName);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

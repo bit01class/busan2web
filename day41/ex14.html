@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+    </style>
+    <script type="text/javascript">
+        var input,div,btn;
+        var callback=function(e){
+            //console.log(e.type,e.keyCode,e.key);
+            if(e.keyCode==39)
+            div.style.marginLeft=parseInt(div.style.marginLeft)+10+"px";
+            if(e.keyCode==37)
+            div.style.marginLeft=parseInt(div.style.marginLeft)-10+"px";
+            if(e.keyCode==38)
+            div.style.marginTop=parseInt(div.style.marginTop)-10+"px";
+            if(e.keyCode==40)
+            div.style.marginTop=parseInt(div.style.marginTop)+10+"px";
+
+        };
+        window.onload=function(){
+            input=document.querySelector('input');
+            div=document.querySelector('div');
+            div.style.marginLeft='0px';
+            div.style.marginTop='0px';
+            btn=document.querySelector('button');
+            document.onkeydown=callback;
+            document.onkeyup=callback;
+            document.onkeypress=callback;
+        };
+    </script>
+</head>
+<body>
+    <input/><button>btn</button>
+    <div></div>
+</body>
+</html>

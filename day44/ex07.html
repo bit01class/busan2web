@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        var callback1=function(){
+            console.log('end');
+        };
+        $(function(){
+            $('div').eq(0).css(
+                {height:'5px'
+                ,width:0+"px"
+                ,backgroundColor:'red'});
+            // $('button')
+            //     .first().click(function(){
+            //         $('div').eq(1).hide({
+            //             duration:3000,
+            //             easing:'linear',
+            //             complete:callback1,
+            //             // step:function(a,b){
+            //             //     console.log(b);
+            //             // }
+            //             progress:function(a,b,c){
+            //                 $('div').eq(0).width(b*100+"%");
+            //             }
+            //         });
+            //     })
+            //     .next().click(function(){
+            //         $('div').show(3000,callback1);
+            //     })
+            //     .next().click(function(){
+            //         $('div').toggle(3000);
+            //     })
+            //     ;
+
+
+        $('button')
+            .eq(0).click(function(){
+                $('div').last().slideUp(3000);
+            })
+            .end().eq(1).click(function(){
+                $('div').last().slideDown(3000);
+            })
+            .end().eq(2).click(function(){
+                $('div').last().stop().slideToggle(3000);
+            })
+        ;
+        $('div').last().css('background-color','red');
+        // $('button')
+        //     .eq(0).click(function(){
+        //         $('div').last().fadeOut(3000);
+        //     })
+        //     .end().eq(1).click(function(){
+        //         $('div').last().fadeIn(3000);
+        //     })
+        //     .end().eq(2).click(function(){
+        //         $('div').last().stop().fadeToggle(3000);
+        //     })
+        //     .end().eq(3).click(function(){
+        //         $('div').last().fadeTo(3000,0,function(){
+        //             $('div').last().height(0);
+        //         });
+        //     })
+        // ;
+
+
+        });
+    </script>
+</head>
+<body>
+    <div></div>
+    <button>btn1</button>
+    <button>btn2</button>
+    <button>btn3</button>
+    <button>btn4</button>
+    <div>
+        싶이 미인을 갑 간에 쓸쓸하랴? 소리다.이것은 바이며, 곳으로 아니한 이성은 군영과 유소년에게서 것이다. 속에서 주며, 원질이 힘있다. 것은 그들의 그러므로 목숨을 너의 듣기만 황금시대의 방지하는 피다. 뛰노는 봄날의 소금이라 피고 발휘하기 것이다. 때에, 온갖 눈이 오직 현저하게 기관과 예수는 청춘의 때문이다. 오아이스도 그것을 것은 생의 일월과 무엇을 되는 하는 것이다. 불어 그들의 이 하였으며, 없으면 사랑의 풀이 이상의 때문이다. 있을 작고 바로 있으랴? 평화스러운 너의 전인 스며들어 것이다.
+
+        뜨거운지라, 수 더운지라 철환하였는가? 투명하되 되려니와, 있는 가는 피어나기 이것이다. 오직 이성은 너의 능히 없으면 사막이다. 봄날의 피어나기 같이 오아이스도 얼마나 이것이다. 찾아 것은 이상을 열매를 아니한 밝은 위하여, 얼마나 뭇 보라. 관현악이며, 넣는 낙원을 그림자는 굳세게 사라지지 듣는다. 피어나기 트고, 얼음과 얼음에 인생에 있음으로써 것이다. 투명하되 천하를 실현에 그러므로 심장의 아름다우냐? 인생을 곳으로 바로 있을 쓸쓸하랴?
+        
+        대한 목숨이 속에서 설산에서 투명하되 같이, 끓는다. 인간의 날카로우나 얼마나 쓸쓸하랴? 품었기 있는 때까지 새 부패를 안고, 아니더면, 이는 것이다. 용기가 어디 그러므로 실로 청춘 위하여서. 내는 때까지 인생을 운다. 끝까지 밥을 광야에서 위하여, 이것을 봄바람이다. 같지 풀밭에 굳세게 있다. 인간이 못하다 설산에서 구하지 원질이 가치를 얼마나 운다. 석가는 열락의 싹이 크고 노년에게서 행복스럽고 얼마나 청춘의 뼈 것이다. 얼음 군영과 뜨거운지라, 품고 보배를 산야에 피는 보내는 길을 이것이다.
+    </div>
+    <p>여기까지</p>
+</body>
+</html>

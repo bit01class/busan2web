@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        h1{
+            height: 50px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        window.onload=function(){
+            $('h1').css("color","red");
+            $('h1').css("background-color","yellow");
+            //$('h1').css("width",300);
+            $('h1').css({width: '300px', height: '50px'});
+            var callback=function(idx,val){
+                console.log(idx,val);
+                return "rgba(255,0,0,"+idx/7+")";
+            };
+            $('li').css('background-color',callback);
+        };
+    </script>
+</head>
+<body>
+    <h1>style 속성</h1>
+    <ul>
+        <li><a href="#">link</a></li>
+        <li><a href="#">link</a></li>
+        <li><a href="#">link</a></li>
+        <li><a href="#">link</a></li>
+        <li><a href="#">link</a></li>
+        <li><a href="#">link</a></li>
+        <li><a href="#">link</a></li>
+        <li><a href="#">link</a></li>
+    </ul>
+</body>
+</html>

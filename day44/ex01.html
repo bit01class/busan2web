@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            console.log('ready...');
+            $('img')
+                .error(function(){
+                    $('img').attr('src','imgs/thumb01.jfif');
+                })
+                .attr('src','imgs/big00.jfif');
+        });
+        $(window).resize(function(){
+            console.log('사이즈 변경'
+            ,$(window).width(),$(window).height());
+        });
+        $(window).scroll(function(){
+            console.log('scrolling...'
+            ,$(document).height()+110-screen.height
+            ,$(window).scrollTop());
+        });
+    </script>
+
+</head>
+<body>
+    <h1>event</h1>
+    <img src="imgs/thumb01.jfif"/>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

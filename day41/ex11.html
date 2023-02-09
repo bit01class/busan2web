@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        var btn1,btn2,btn3,btn4,btn5,target;
+        window.onload=function(){
+            btn1=document.querySelector('button');
+            target=document.querySelector('#target');
+            btn1.onclick=function(){
+                target.innerHTML=target.innerHTML+'<div>클릭</div>';
+            };
+            btn1.onmouseover=function(){
+                target.innerHTML=target.innerHTML+'<div>위로</div>';
+            };
+            btn1.onmouseout=function(){
+                target.innerHTML=target.innerHTML+'<div>밖으로</div>';
+            };
+            btn1.onmousedown=function(){
+                target.innerHTML=target.innerHTML+'<div>누르고</div>';
+            };
+            btn1.onmouseup=function(){
+                target.innerHTML=target.innerHTML+'<div>(누르고)올라오고</div>';
+            };
+            btn1.ondblclick=function(){
+                target.innerHTML=target.innerHTML+"<div>더블클릭</div>";
+            };
+        };
+    </script>
+</head>
+<body>
+    <button>btn1</button>
+    <button>btn2</button>
+    <button>btn3</button>
+    <button>btn4</button>
+    <button>btn5</button>
+    <div id="target"></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        window.onload=function(){
+            console.log($('ul').html());
+            console.log($('ul').text());
+            $('ul').html($('ul').html()+'<li>item5</li>');
+            $('ol').html('<li>item9</li>');
+            $('ol').append('<li>item10</li>');
+            $('ol').prepend('<li>item8</li>');
+            $('ol').prepend('<li>item7</li>');
+            $('ol').prepend(document.querySelector('ul>li:last-child'));
+            $('ol').prepend($('ul>li').last());
+            $('ul>li').last().prependTo('ol');
+            $('ol').children().last().appendTo('ul');
+            $('ol').before('<p>before1</p>');
+            $('ol').after('<p>after1</p>');
+            $('ol').before('<p>before2</p>');
+            $('ol').after('<p>after2</p>');
+            $('ol').before('<p>before3</p>');
+            $('ol').after('<p>after3</p>');
+            $('ol').insertBefore('ul');
+            $('ol').insertAfter('ul');
+            //$('#target').html('<img src="imgs/thumb01.jfif"/>');
+        };
+        $(function(){
+            console.log($('h1').html());
+        });
+    </script>
+</head>
+<body>
+    <h1>inner html&text</h1>
+    <div id="target"></div>
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+    </ul>
+    <ol>
+        <li>item5</li>
+        <li>item6</li>
+        <li>item7</li>
+        <li>item8</li>
+    </ol>
+</body>
+</html>

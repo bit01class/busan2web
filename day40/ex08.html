@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        // 클로저
+        var a={};
+        function func01(){
+            var a={"key1":"val1"};
+
+            var c=function (val){
+                if(val)
+                a.key1=val;
+                else
+                return a.key1; 
+            };
+            return c;
+        }
+        var b=func01();
+        b(4321);
+        console.log(a,b());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

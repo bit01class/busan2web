@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        ul{
+            list-style:none;
+            padding: 0px;
+            margin: 0px;
+        }
+        li{
+            float: left;
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        window.onload=function(){
+            $('li').first().addClass('show');
+            $('li').first().removeClass('show');
+        };
+    </script>
+
+</head>
+<body>
+    <ul>
+        <li><img src="imgs/thumb01.jfif"/></li>
+        <li><img src="imgs/thumb02.jfif"/></li>
+        <li><img src="imgs/thumb03.jfif"/></li>
+        <li><img src="imgs/thumb04.jfif"/></li>
+        <li><img src="imgs/thumb05.jfif"/></li>
+        <li><img src="imgs/thumb06.jfif"/></li>
+    </ul>
+</body>
+</html>

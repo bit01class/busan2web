@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        function func01(){console.log('Run..');}
+        var arr1=[111,'item2',func01];
+        for(ele of arr1){
+            if(typeof ele == 'function')
+            ele();
+            else
+            console.log(ele);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

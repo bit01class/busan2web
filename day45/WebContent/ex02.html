@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+$(document).ready(function(){
+    var option={
+        //hideControlOnEnd:true,
+        captions:true,
+        mode:'horizontal',
+        speed:3000,
+        slideMargin:50,
+        infiniteLoop:true,
+        minSlides:1,
+        maxSlides:3,
+        slideWidth:200,
+        moveSlides:1,
+        pager:true,
+        pagerSelector:$('p'),
+        nextText:'다음'
+    };
+    $('.slider').bxSlider(option);
+});
+    </script>
+</head>
+<body>
+    <div class="slider">
+        <div><img src="imgs/thumb01.jfif" title="img1"></div>
+        <div><img src="imgs/thumb02.jfif" title="img2"></div>
+        <div><img src="imgs/thumb03.jfif" title="img3"></div>
+        <div><img src="imgs/thumb04.jfif" title="img4"></div>
+        <div><img src="imgs/thumb05.jfif" title="img5"></div>
+        <div><img src="imgs/thumb06.jfif" title="img6"></div>
+    </div>
+    <p></p> 
+</body>
+</html>

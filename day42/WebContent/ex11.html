@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+var xhr;
+window.onload=function(){
+	xhr=new XMLHttpRequest();
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4){
+		var txt=xhr.responseText;
+		console.log(txt);
+		var obj=JSON.parse(txt);
+		console.log(obj);
+		}
+	};
+	xhr.open('get','ex11.json');
+	xhr.send();
+};
+</script>
+<body>
+
+</body>
+</html>
