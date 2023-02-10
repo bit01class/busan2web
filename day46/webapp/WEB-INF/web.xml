@@ -8,8 +8,24 @@
   	<servlet-name>jsonList</servlet-name>
   	<servlet-class>com.bit.emp.JsonController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>jsonInsert</servlet-name>
+  	<servlet-class>com.bit.emp.AddController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>jsonOne</servlet-name>
+  	<servlet-class>com.bit.emp.OneController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>jsonOne</servlet-name>
+  	<url-pattern>/emp/one.do</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>jsonList</servlet-name>
   	<url-pattern>/emp/emp.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>jsonInsert</servlet-name>
+  	<url-pattern>/emp/add.do</url-pattern>
   </servlet-mapping>
 </web-app>

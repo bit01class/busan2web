@@ -5,18 +5,32 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <style type="text/css">
-
+table{
+	width: 80%;
+	margin: 0px auto;
+	border-collapse: collapse;
+}
+table,th,td{
+	border:1px solid gray;
+}
+tr>td:nth-child(1),tr>td:nth-child(3),tr>td:nth-child(4){
+		width: 100px;	text-align: right;
+}
+table tr>td>a{
+	display: block; color:#333; text-decoration: none;
+}
 </style>
 <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="../js/menu.js"></script>
 <script type="text/javascript">
 var listLoading=function(){
-	$.getJSON('emp.do',function(data){
+	$.getJSON('http://127.0.0.1:8080/emp/emp.do',function(data){
 		data.emp.forEach(function(ele){
 			$('<tr/>')
-				.append($('<td/>').text(ele.empno))	
-				.append($('<td/>').text(ele.hiredate))	
-				.append($('<td/>').text(ele.sal))
+				.append($('<td/>').html('<a href="emp.html?empno='+ele.empno+'">'+ele.empno+'</a>'))	
+				.append($('<td/>').html('<a href="emp.html?empno='+ele.empno+'">'+ele.ename+'</a>'))	
+				.append($('<td/>').html('<a href="emp.html?empno='+ele.empno+'">'+ele.hiredate.substring(0,10)+'</a>'))	
+				.append($('<td/>').html('<a href="emp.html?empno='+ele.empno+'">'+ele.sal+'</a>'))
 			.appendTo('tbody');
 		});
 	});
@@ -37,21 +51,21 @@ $(function(){
 				<label for="pw">pw</label>
 				<input type="text" name="pw" id="pw"/>
 				<button>로그인</button>
-				<a href="login/join.html">join</a>
+				<a href="../login/join.html">join</a>
 			</form>
 		</div>
 	</div>
 	<div id="menu">
 		<ul>
-			<li><a href="index.html">home</a></li>
-			<li><a href="intro.html">intro</a></li>
+			<li><a href="../index.html">home</a></li>
+			<li><a href="../intro.html">intro</a></li>
 			<li><a href="#">emp</a>
 				<ol>
-					<li><a href="emp/list.html">list</a></li>
-					<li><a href="emp/add.html">add</a></li>
+					<li><a href="list.html">list</a></li>
+					<li><a href="add.html">add</a></li>
 				</ol>
 			</li>
-			<li><a href="login/form.html">login</a></li>
+			<li><a href="../login/form.html">login</a></li>
 		</ul>
 	</div>
 	<div id="content">

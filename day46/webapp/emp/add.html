@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<style type="text/css">
+#content form{
+	width: 400px;
+	margin: 0px auto;
+}
+#content form>div{
+	margin-bottom: 10px;
+	text-align: center;
+}
+#content form>div>label{
+	width: 130px;
+	display: inline-block;
+	background-color: #ddd;
+	text-align: left;
+}
+#content form>div>input{
+	width: 250px;
+}
+.err{color: red;	font-style: italic;}
+</style>
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript">
+var addEmp=function(){
+	//var param=$('#content form').serialize();
+	var param={
+				empno:$('#content input').eq(0).val()
+				,ename:$('#content input').eq(1).val()
+				,sal:$('#content input').eq(2).val()
+				}; 
+	$.post('add.do',$.param(param),function(data,msg){
+		console.log(data,msg);
+		location.href='list.html';
+	});
+};
+$(function(){
+	$('#content form').submit(function(){
+		$(this).find('span').remove();
+		$(this).find(":text").each(function(idx,ele){
+			if($(ele).val()=='')
+				$(ele).after('<span class="err">빈값허용안함</span>');
+		});
+		addEmp();
+		return false;
+	});
+});
+</script>
+</head>
+<body>
+<div class="container">
+	<div id="header">
+		<h1>비트교육센터</h1>
+		<div>
+			<form>
+				<label for="id">id</label>
+				<input type="text" name="id" id="id"/>
+				<label for="pw">pw</label>
+				<input type="text" name="pw" id="pw"/>
+				<button>로그인</button>
+				<a href="../login/join.html">join</a>
+			</form>
+		</div>
+	</div>
+	<div id="menu">
+		<ul>
+			<li><a href="../index.html">home</a></li>
+			<li><a href="../intro.html">intro</a></li>
+			<li><a href="#">emp</a>
+				<ol>
+					<li><a href="list.html">list</a></li>
+					<li><a href="add.html">add</a></li>
+				</ol>
+			</li>
+			<li><a href="../login/form.html">login</a></li>
+		</ul>
+	</div>
+	<div id="content">
+		<h2>입력페이지</h2>
+		<form>
+			<div>
+				<label for="empno">empno</label>
+				<input type="text" name="empno" id="empno"/>
+			</div>
+			<div>
+				<label for="ename">ename</label>
+				<input type="text" name="ename" id="ename"/>
+			</div>
+			<div>
+				<label for="sal">sal</label>
+				<input type="text" name="sal" id="sal"/>
+			</div>
+			<div>
+				<button type="submit">입력</button>
+				<button type="reset">취소</button>
+				<button type="button">뒤로</button>
+			</div>
+		</form>
+	</div>
+	<div id="footer">
+	Copyright by bitacademy co.ltd.<br/>All rights reserved.
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
