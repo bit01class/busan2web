@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<style type="text/css">
+.bx{ width: 750px; margin: 0px auto;}
+.bx>ul{}
+.bx>ul>li{}
+.bx li>img{width: 250px;height: 250px;}
+.bx .bx-wrapper{
+	position: relative;
+}
+.bx .bx-controls-direction>a{
+	position: absolute;	top:16px;
+	background-color: rgba(0,0,0,0.2);
+	display: inline-block;
+	width: 50px;	height: 238px;
+	text-decoration: none;
+	line-height: 220px;	text-align: center;
+	color:white;font-size: 50pt;font-weight: bold;
+}
+.bx-pager{
+	width: 120px;
+	margin: 0px auto;
+}
+.bx-pager .bx-pager-item{
+	float: left;
+	width: 20px; height: 20px;
+}
+.bx .bx-controls-direction>a:last-child{left: 700px;}
+.bx .bx-pager-link{
+	text-decoration: none;	color:gray;
+}
+.bx .bx-pager .active{color:#333;}
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.bx>ul').bxSlider({
+		slideWidth:250,moveSlides:1
+		,minSlides:1,maxSlides:3
+		,prevText:"<",nextText:">"
+		});
+	$('.bx-pager-link').text('●');
+});
+</script>
+</head>
+<body>
+<div class="container">
+	<div id="header">
+		<h1>비트교육센터</h1>
+		<div>
+			<form>
+				<label for="id">id</label>
+				<input type="text" name="id" id="id"/>
+				<label for="pw">pw</label>
+				<input type="text" name="pw" id="pw"/>
+				<button>로그인</button>
+				<a href="login/join.html">join</a>
+			</form>
+		</div>
+	</div>
+	<div id="menu">
+		<ul>
+			<li><a href="index.html">home</a></li>
+			<li><a href="intro.html">intro</a></li>
+			<li><a href="#">emp</a>
+				<ol>
+					<li><a href="emp/list.html">list</a></li>
+					<li><a href="emp/add.html">add</a></li>
+				</ol>
+			</li>
+			<li><a href="login/form.html">login</a></li>
+		</ul>
+	</div>
+	<div id="content">
+		<div class="bx">
+			<ul>
+				<li><img src="imgs/thumb01.jfif"/></li>
+				<li><img src="imgs/thumb02.jfif"/></li>
+				<li><img src="imgs/thumb03.jfif"/></li>
+				<li><img src="imgs/thumb04.jfif"/></li>
+				<li><img src="imgs/thumb05.jfif"/></li>
+				<li><img src="imgs/thumb06.jfif"/></li>
+			</ul>
+		</div>
+	</div>
+	<div id="footer">
+	Copyright by bitacademy co.ltd.<br/>All rights reserved.
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
