@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>day49</display-name>
+  <welcome-file-list>
+    <welcome-file>index.do</welcome-file>
+  </welcome-file-list>
+  <servlet>
+  	<servlet-name>ex01</servlet-name>
+  	<servlet-class>com.bit.controller.Ex01Controller</servlet-class>
+  	<init-param>
+  		<param-name>key1</param-name>
+  		<param-value>val1</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>key2</param-name>
+  		<param-value>val2</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ex01</servlet-name>
+  	<url-pattern>/ex01.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ex01</servlet-name>
+  	<url-pattern>/ex01.bit</url-pattern>
+  </servlet-mapping>
+</web-app>
+
+
+
+
+
+
