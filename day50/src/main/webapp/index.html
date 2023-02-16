@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/table.css">
+<style rel="stylesheet" type="text/css">
+    .content>form{
+        display: block;
+        width: 100%;
+    }
+    .content>form>div{
+        margin-bottom: 5px;
+    }
+    .content>form>div>label{
+        display: inline-block;
+        text-align: right;
+        width: 43%;
+    }
+    .content>form>div>input{
+        width: 43%;
+    }
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(window).on('popstate',function(e){
+    if(location.href.endsWith('/')
+        ||location.href.endsWith('/#index')){
+            $('.content').html(p1);
+    }else if(location.href.endsWith('/#intro')){
+        $('.content').html(p2);
+    }else if(location.href.endsWith('/#list')){
+        $('.content').html(p3);
+        getList();
+    }else if(location.href.endsWith("/#add")){
+        $('.content').html(p4);
+    }else{
+        var deptno=location.href.substr(location.href.indexOf('#')+1);
+        getDept(Number(deptno));
+    }
+});
+var p1,p2,p3,p4
+$(function(){
+    p1=$('#p1').html();
+    p2=$('#p2').html();
+    p3=$('#p3').html();
+    p4=$('#p4').html();
+    $("#p1,#p2,#p3,#p4").hide();
+    $('.content').on('submit','form',function(e){
+        e.preventDefault();
+        if($(e.target).find('button').html()=='입력')
+            insertOne(e.target);
+        else if($(e.target).find('button').html()=='수정')
+            updateOne(e.target);
+    });
+});
+function getDept(deptno){
+    $.getJSON('http://127.0.0.1:8080/day50/api/dept/'+deptno,function(data){
+        console.log(data);
+        $('.content').html(p4);
+        var keys=['deptno','dname','loc'];
+        $('.content')
+            .find('h2').html('수정페이지')
+            .end()
+            .find('button').eq(0).html('수정')
+            .end()
+            .end()
+            .find('form')
+                .find('input').each(function(idx,ele){
+                    if(idx==0) $(ele).prop('readonly',true);
+                    $(ele).val(data.dept[0][keys[idx]]);
+                });
+    });
+}
+function updateOne(form){
+    var deptno=$(form).find('input').eq(0).val();
+    var param=$(form).serialize();
+    $.ajax({
+        url:'http://127.0.0.1:8080/day50/api/dept/'+deptno
+        ,type:'put'
+        ,dataType: "text"
+        ,data:param
+        ,success:function(data){
+            document.querySelectorAll('.menu a')[2].click();
+        }
+        ,error:function(xhr,msg,err){
+            console.log(msg);
+        }
+    });
+}
+function insertOne(target){
+    var param=$(target).serialize();
+    $.post('http://127.0.0.1:8080/day50/api/dept',param,function(data){
+        document.querySelectorAll('.menu a')[2].click();
+        console.log('success',data);
+    });
+}
+function getList(){
+    $.getJSON('http://127.0.0.1:8080/day50/api/dept',function(data){
+        $(data.depts).each(function(idx,ele){
+            $('<a href="#'+ele.deptno+'"/>')
+                .append($('<span/>').html(ele.deptno))
+                .append($('<span/>').html(ele.dname))
+                .append($('<span/>').html(ele.loc))
+            .appendTo('.tbody')
+            ;
+        });
+    });
+}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>비트교육센터</h1>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="#index">home</a></li>
+                <li><a href="#intro">intro</a></li>
+                <li><a href="#list">dept</a></li>
+                <li><a href="#login">login</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            
+        </div>
+        <div class="footer">
+            &copy; bitacademy co.ltd. All rights reserved. 
+        </div>
+    </div>
+    <div id="p1">
+        <img src="https://picsum.photos/500/300"/>
+    </div>
+    <div id="p2">
+        <h2>intro page</h2>
+    </div>
+    <div id="p3">
+        <h2>list page</h2>
+        <div class="table">
+            <div class="thead">
+                <span>deptno</span>
+                <span>dname</span>
+                <span>loc</span>
+            </div>
+            <div class="tbody">
+            </div>
+        </div>
+        <p><a class="btn" href="#add">입력</a></p>
+    </div>
+    <div id="p4">
+        <h2>add page</h2>
+        <form>
+            <div>
+                <label>deptno</label>
+                <input name="deptno" />
+            </div>
+            <div>
+                <label>dname</label>
+                <input name="dname" />
+            </div>
+            <div>
+                <label>loc</label>
+                <input name="loc" />
+            </div>
+            <div>
+                <button class="btn">입력</button>
+                <button class="btn" type="reset">취소</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
