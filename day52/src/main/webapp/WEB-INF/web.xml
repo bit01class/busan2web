@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>framework</servlet-name>
+  	<servlet-class>com.bit.framework.handler.DispatchServlet</servlet-class>
+  	<init-param>
+  		<param-name>/index.do</param-name>
+  		<param-value>com.bit.controller.IndexController</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>/intro.do</param-name>
+  		<param-value>com.bit.controller.IntroController</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>/emp/list.do</param-name>
+  		<param-value>com.bit.controller.ListController</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>/emp/add.do</param-name>
+  		<param-value>com.bit.controller.AddController</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>/emp/insert.do</param-name>
+  		<param-value>com.bit.controller.InsertController</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>/emp/detail.do</param-name>
+  		<param-value>com.bit.controller.DetailController</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>framework</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+</web-app>
