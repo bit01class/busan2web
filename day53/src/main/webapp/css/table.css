@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.table{
+	width: 80%;
+	margin: 0px auto; padding: 0px;
+}
+.table>.thead{
+	background-color: gray;
+	border-bottom: 3px solid gray;
+}
+.table>.thead>span,.table>.tbody span{
+	display: inline-block;
+	width: 30%;
+}
+.table>.tbody{
+	border-bottom: 1px dashed gray;
+}
