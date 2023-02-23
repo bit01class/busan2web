@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="index" class="com.bit.struts.action.IndexAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="intro" class="com.bit.struts.action.IndexAction">
+			<result>/intro.jsp</result>
+		</action>
+	</package>
+	<package name="dept" namespace="/dept" extends="struts-default">
+		<action name="list" class="com.bit.struts.action.ListAction">
+			<interceptor-ref name="params"/>
+			<result name="success">/dept/list.jsp</result>
+		</action>
+		<action name="add" class="com.bit.struts.action.IndexAction">
+			<result>/dept/add.jsp</result>
+		</action>
+		<action name="insert" class="com.bit.struts.action.AddAction">
+			<interceptor-ref name="params"/>
+			<result name="input">/dept/add.jsp</result>
+			<result name="success" type="redirectAction">list</result>
+		</action>
+		<action name="detail" class="com.bit.struts.action.DeptAction">
+			<interceptor-ref name="params"/>
+			<result name="success">/dept/detail.jsp</result>
+		</action>
+		<action name="update" class="com.bit.struts.action.UpdateAction">
+			<interceptor-ref name="params"/>
+			<result name="input" type="redirect">detail.action?id=${id}</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">detail</param>
+				<param name="id">${id}</param>
+			</result>
+		</action>
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
