@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 6.0//EN"
+        "https://struts.apache.org/dtds/struts-6.0.dtd">
+
+<struts>
+
+	<package name="dept" namespace="/dept" extends="struts-default">
+		<action name="list" class="com.bit.struts.action.ListAction">
+			<interceptor-ref name="params"/>
+			<result>/dept/list.jsp</result>
+		</action>
+		<action name="add" class="com.bit.struts.action.AddAction">
+			<result name="success">/dept/add.jsp</result>
+		</action>
+		<action name="insert" class="com.bit.struts.action.InsertAction">
+			<interceptor-ref name="params"/>
+			<interceptor-ref name="validation"/>
+			<result name="input">/dept/add.jsp</result>
+			<result name="success" type="redirectAction">list</result>
+		</action>
+		<action name="dept" class="com.bit.struts.action.DeptAction">
+			<interceptor-ref name="params"/>
+			<result name="success">/dept/add.jsp</result>
+		</action>
+		<action name="update" class="com.bit.struts.action.UpdateAction">
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result name="success" type="redirectAction">list</result>
+		</action>
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
