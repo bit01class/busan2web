@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<select id="selectAll" resultClass="com.bit.struts.model.DeptVo">
+	select * from dept
+	</select>
+	<insert id="insertOne" parameterClass="com.bit.struts.model.DeptVo">
+	insert into dept values (#deptno#,#dname#,#loc#)
+	</insert>
+	<select id="selectOne" parameterClass="int" resultClass="com.bit.struts.model.DeptVo">
+	select * from dept where deptno=#val#
+	</select>
+	
+	<update id="updateOne" parameterClass="com.bit.struts.model.DeptVo">
+	update dept set dname=#dname#, loc=#loc# where deptno=#deptno#
+	</update>
+	
+	<delete id="deleteOne" parameterClass="int">
+	delete from dept where deptno=#val#
+	</delete>
+</sqlMap>
+
+
+
+
+
+
+
+
+
