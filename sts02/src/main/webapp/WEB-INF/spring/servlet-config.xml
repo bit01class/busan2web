@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+	<property name="driver"><bean class="com.mysql.cj.jdbc.Driver"/></property>
+	<property name="url" value="jdbc:mysql://localhost:3306/lecture"></property>
+	<property name="username" value="scott"></property>
+	<property name="password" value="tiger"></property>
+</bean>
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<property name="dataSource" ref="dataSource"></property>
+</bean>
+<bean id="deptDao" class="com.bit.sts02.model.DeptDaoImpl2">
+	<property name="jdbcTemplate" ref="jdbcTemplate"/>
+</bean>
+
+<!-- handlerMapping -->
+	<bean 
+	id="handlerMapping"
+	class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="urlMap">
+			<props>
+				<prop key="/index.do">index</prop>
+				<prop key="/dept/list.do">list</prop>
+				<prop key="/dept/add.do">add</prop>
+				<prop key="/dept/insert.do">insert</prop>
+				<prop key="/dept/detail.do">detail</prop>
+				<prop key="/dept/update.do">update</prop>
+				<prop key="/dept/delete.do">delete</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="index" class="com.bit.sts02.controller.IndexController"></bean>
+	<bean id="list" class="com.bit.sts02.controller.ListController">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	<bean id="add" class="com.bit.sts02.controller.AddController"></bean>
+	<bean id="insert" class="com.bit.sts02.controller.InsertController">
+		<property name="supportedMethods" value="POST"></property>
+		<property name="commandName" value="bean"></property>
+		<property name="commandClass" value="com.bit.sts02.model.DeptVo"></property>
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	<bean id="detail"
+	class="com.bit.sts02.controller.DetailController">
+		<property name="deptDao" ref="deptDao"/>
+	</bean>
+	<bean id="update" class="com.bit.sts02.controller.UpdateController">
+		<property name="supportedMethods" value="GET,POST"></property>
+		<property name="commandName" value="bean"></property>
+		<property name="commandClass" value="com.bit.sts02.model.DeptVo"></property>
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	<bean id="delete" class="com.bit.sts02.controller.DeleteController">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	
+	<bean id="viewResolver"
+	 class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	 	<property name="prefix" value="/WEB-INF/views/"/>
+	 	<property name="suffix" value=".jsp"/>
+	 </bean>
+</beans>
+
+
+
+
+
+
+
+

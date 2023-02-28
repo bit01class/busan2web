@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<div class="row" id="menu">
+		<div class="col-md-2 bg-info">&nbsp;</div>
+		<div class="col-md-2 bg-info"><a href="${root }">HOME</a></div>
+		<div class="col-md-2 bg-info"><a href="${root }dept/list.do">DEPT</a></div>
+		<div class="col-md-2 bg-info"><a href="${root }dept/add.do">INSERT</a></div>
+		<div class="col-md-2 bg-info"><a href="${root }user/login.do">LOGIN</a></div>
+		<div class="col-md-2 bg-info">&nbsp;</div>
+	</div>
+	<div class="row" id="content">
+		<div class="col-md-12">
+		<!-- content start -->
