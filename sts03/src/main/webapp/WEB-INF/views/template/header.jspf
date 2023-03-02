@@ -1,0 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<c:url value="/" var="root"></c:url>
+<div class="container">
+	<div class="row" id="header">
+	  <div class="col-md-6"><img src="https://dummyimage.com/200x50/000/fff.png&text=LOGO" /></div>
+	  <div class="col-md-6">...님 로그인 중</div>
+	</div>

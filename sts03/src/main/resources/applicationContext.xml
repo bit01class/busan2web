@@ -141,7 +141,7 @@
 	</bean>
 	
 	<bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
-		<property name="location" value="/db.properties"/>
+		<property name="location" value="classpath:/db.properties"/>
 	</bean>
 	<bean id="dataSource"
 	 class="org.springframework.jdbc.datasource.DriverManagerDataSource">

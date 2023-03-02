@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
+
+	<!-- handlerMapping -->
+	<bean 
+	id="handlerMapping"
+	class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="urlMap">
+			<props>
+				<prop key="/index.do">index</prop>
+				<prop key="/dept/list.do">list</prop>
+				<prop key="/dept/add.do">add</prop>
+				<prop key="/dept/insert.do">insert</prop>
+				<prop key="/dept/detail.do">detail</prop>
+				<prop key="/dept/update.do">update</prop>
+				<prop key="/dept/delete.do">delete</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="index" class="com.bit.sts02.controller.IndexController"></bean>
+	<bean id="list" class="com.bit.sts02.controller.ListController">
+	</bean>
+	<bean id="add" class="com.bit.sts02.controller.AddController"></bean>
+	<bean id="insert" class="com.bit.sts02.controller.InsertController">
+		<property name="supportedMethods" value="POST"></property>
+		<property name="commandName" value="bean"></property>
+		<property name="commandClass" value="com.bit.spring.model.DeptVo"></property>
+	</bean>
+	<bean id="detail"
+	class="com.bit.sts02.controller.DetailController">
+	</bean>
+	<bean id="update" class="com.bit.sts02.controller.UpdateController">
+		<property name="supportedMethods" value="GET,POST"></property>
+		<property name="commandName" value="bean"></property>
+		<property name="commandClass" value="com.bit.spring.model.DeptVo"></property>
+	</bean>
+	<bean id="delete" class="com.bit.sts02.controller.DeleteController">
+	</bean>
+	
+	<bean id="viewResolver"
+	 class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	 	<property name="prefix" value="/WEB-INF/views/"/>
+	 	<property name="suffix" value=".jsp"/>
+	 </bean>
+</beans>
