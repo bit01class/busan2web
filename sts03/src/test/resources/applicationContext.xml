@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 
+/// IoC & DI
+
+	<bean id="module" class="com.bit.spring.non.module.Module2"></bean>
+	
+	<bean id="ms" class="com.bit.spring.non.service.ModuleService">
+		<property name="module" ref="module"></property>
+		<constructor-arg ref="module"></constructor-arg>
+	</bean>
+ 	<bean id="module" class="com.bit.spring.service.Module3">
+ 		<property name="boo" value="true"></property>
+ 		<property name="ch1" value="@"></property>
+ 		<property name="su1" value="1234"></property>
+ 		<property name="su2" value="123456789"></property>
+ 		<property name="su3" value="3.14"></property>
+ 		<property name="msg" value="abcdefg"></property>
+ 		<property name="nalja" ref="nal"></property>
+ 	</bean>
+	<bean id="nal" class="java.util.Date"></bean>
+ 
+ 	<bean id="module" class="com.bit.spring.service.Module4">
+ 		<property name="msgs">
+ 			<array>
+ 				<value>item1</value>
+ 				<value>item2</value>
+ 				<value>item3</value>
+ 				<value>item4</value>
+ 				<value>item5</value>
+ 			</array>
+ 		</property>
+ 	</bean>
+ 	<bean id="module" class="com.bit.spring.service.Module6">
+ 		<property name="map">
+ 			<props>
+ 				<prop key="key1">val1</prop>
+ 				<prop key="key2">val2</prop>
+ 				<prop key="key3">val3</prop>
+ 				<prop key="key4">val4</prop>
+ 			</props>
+ 		</property>
+ 	
+ 		<property name="map">
+ 			<map>
+ 				<entry key="key1">
+ 					<value>val1</value>
+ 				</entry>
+ 				<entry key="key2">
+ 					<value>val2</value>
+ 				</entry>
+ 				<entry key="key3">
+ 					<value>val3</value>
+ 				</entry>
+ 				<entry key="key4">
+ 					<value>val4</value>
+ 				</entry>
+ 			</map>
+ 		</property> 
+ 	</bean>
+-->
+
+<!-- 
+/// AOP
+ -->
+	<bean id="myService" class="com.bit.spring.aop.CoreService">
+		<property name="msg" value="abcdefg"></property>
+		<property name="name" value="user1"></property>
+		<property name="su" value="0"></property>
+	</bean>
+	
+	<bean id="methodBeforeAdvice" class="com.bit.spring.aop.BeforePrint"></bean>
+	<bean id="afterReturningAdvice" class="com.bit.spring.aop.AfterPrint"></bean>
+	<bean id="throwsAdvice" class="com.bit.spring.aop.AfterErr"></bean>
+	<bean id="aroundAdvice" class="com.bit.spring.aop.AroundPrint"></bean>
+ 
+ 	<!-- 
+ 	<bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+ 		<property name="target" ref="myService"></property>
+ 		<property name="interceptorNames">
+ 			<list>
+ 				<value>pointcutAdvisor</value>
+ 			</list>
+ 		</property>
+ 	</bean>
+ 	<bean id="pointcut" 
+ 	class="org.springframework.aop.support.NameMatchMethodPointcut">
+ 		<property name="mappedNames">
+ 			<array>
+ 				<value>printMsg</value>
+ 				<value>printName</value>
+ 			</array>
+ 		</property>
+ 	</bean>
+ 	 -->
+ 	<bean id="pointcut"
+ 	 class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+ 		<property name="patterns">
+ 			<array>
+ 				<value>.*All.*</value>
+ 				<value>.*One.*</value>
+ 			</array>
+ 		</property>
+ 	</bean>
+ 	<!-- 
+ 	정규표현식을 알아본다면
+ 기호	의미 
+ .		어떤 문자든 딱 한 글자
+ *		* 앞에 있는 문자가 여러개 있을 수 있음
+ +		+ 앞에 있는 문자가 최소한 한 개에서 여러개 있을 수 있음 
+ \		\ 뒤에 오는 문자가 있어야한다
+ 	 -->
+ 	
+ 	<bean id="beforePointcutAdvisor"
+ 	 class="org.springframework.aop.support.DefaultPointcutAdvisor">
+ 	 	<property name="pointcut" ref="pointcut"></property>
+ 	 	<property name="advice" ref="methodBeforeAdvice"></property>
+ 	 </bean>
+ 	 <bean id="afterPointcutAdvisor"
+ 	 class="org.springframework.aop.support.DefaultPointcutAdvisor">
+ 	 	<property name="pointcut" ref="pointcut"></property>
+ 	 	<property name="advice" ref="afterReturningAdvice"></property>
+ 	 </bean>
+ 	 
+	<bean
+	 class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<array>
+				<value>deptDao</value>
+			</array>
+		</property>
+		<property name="interceptorNames">
+			<list>
+ 				<value>beforePointcutAdvisor</value>
+ 				<value>afterPointcutAdvisor</value>
+ 			</list>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="location" value="/db.properties"/>
+	</bean>
+	<bean id="dataSource"
+	 class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
+	 	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+	 	<property name="url" value="${db.mysql.url}"/>
+	 	<property name="username" value="${db.mysql.user}"/>
+	 	<property name="password" value="${db.mysql.password}"/>
+	 	<property name="autoCommit" value="false"/>
+	 </bean>
+	 
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="deptDao" class="com.bit.spring.model.DeptDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
