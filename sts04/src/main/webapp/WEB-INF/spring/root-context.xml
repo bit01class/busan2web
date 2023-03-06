@@ -22,11 +22,28 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
+	<bean id="sqlMapClient"
+	class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/SqlMapConfig.xml"/>
+	</bean>
+	
+	<bean id="sqlMapClientTemplate"
+	class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean>
+	
+	<bean id="deptDao"
+	class="com.bit.sts04.model.DeptDaoIbatisImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"/>
+	</bean>
+	<!-- 
 	<bean id="deptDao"
 	class="com.bit.sts04.model.DeptDaoImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate"/>
 		<property name="transactionManager" ref="transactionManager"></property>
 	</bean>
+	 -->
 </beans>
 
 
