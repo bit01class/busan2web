@@ -40,11 +40,17 @@ public class DeptDaoImpl implements DeptDao {
 			
 		},pk);
 	}
+	
+	@Override
+	public void seqUpdateOne() {
+		String sql="UPDATE dept_seq SET num=num+1";
+		jdbcTemplate.update(sql);
+	}
 
 	@Override
 	public void insertOne(DeptVo bean) {
-		String sql="insert into dept values (?,?,?)";
-		jdbcTemplate.update(sql,bean.getDeptno(),bean.getDname(),bean.getLoc());
+		String sql="INSERT INTO dept VALUE ((SELECT num FROM dept_seq),CONCAT(?,(SELECT num FROM dept_seq)),?)";
+		jdbcTemplate.update(sql,bean.getDname(),bean.getLoc());
 	}
 
 	@Override

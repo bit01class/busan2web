@@ -15,6 +15,9 @@ public class DaoAdvice{
             Exception ex) throws Exception {
 		System.out.println(ex.toString());
 	}
+	public void afterTargetMethod(JoinPoint join) {
+		System.out.println(join.getThis());
+	}
 
 }
 

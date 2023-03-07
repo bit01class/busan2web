@@ -27,11 +27,38 @@
 		<constructor-arg ref="jdbcTemplate"/>
 	</bean>
 	
+	<bean id="deptService"
+	class="com.bit.sts05.service.DeptServiceImpl">
+		<property name="deptDao" ref="deptDao"/>
+	</bean>
+	
+	<bean id="transactionManager"
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* com.bit.sts05.service.DeptService.*(..))" id="listService"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="listService"/>
+	</aop:config>
+	
+<!--
+	AOP 
+	 
 	<bean id="beforeAdvice"
 	class="com.bit.sts05.utils.BitBeforeAdvice"></bean>
 	
 	<bean id="afterAdvice"
 	class="com.bit.sts05.utils.DaoAdvice"></bean>
+	
+	<bean id="aroundAdvice"
+	class="com.bit.sts05.utils.AroundAdvice"></bean>
 	
 	<aop:config>
 		<aop:pointcut expression="execution(* com.bit.sts05.model.DeptDao.find*(..))" id="cut1"/>
@@ -45,8 +72,15 @@
 		<aop:aspect ref="afterAdvice">
 			<aop:after-throwing method="afterThrowingTargetMethod" pointcut-ref="cut1" throwing="ex"/>
 		</aop:aspect>
+		<aop:aspect ref="afterAdvice">
+			<aop:after method="afterTargetMethod" pointcut-ref="cut1"/>
+		</aop:aspect> 
+		<aop:aspect ref="aroundAdvice">
+			<aop:around method="aroundTargetMethod" pointcut-ref="cut2"/>
+		</aop:aspect> 
+		 
 	</aop:config>
-	<aop:aspectj-autoproxy/>
+-->
 	
 	<!-- 
 	AOP용어
@@ -75,6 +109,7 @@
 			AOP가 핵심기능(타겟)의 코드에 영향을 주지 않으면서 필요한 부가기능(advice)를 추가할 수 있도록
 			해주는 핵심적인 처리과정이다.
 	 -->
+	<aop:aspectj-autoproxy/>
 </beans>
 
 
