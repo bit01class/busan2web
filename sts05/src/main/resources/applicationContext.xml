@@ -27,16 +27,54 @@
 		<constructor-arg ref="jdbcTemplate"/>
 	</bean>
 	
-	<bean id="afterReturningAdvice"
+	<bean id="beforeAdvice"
+	class="com.bit.sts05.utils.BitBeforeAdvice"></bean>
+	
+	<bean id="afterAdvice"
 	class="com.bit.sts05.utils.DaoAdvice"></bean>
 	
 	<aop:config>
-		<aop:pointcut expression="execution(* com.bit.sts05.model.DeptDao.findAll(..))" id="cut1"/>
-		<aop:aspect ref="afterReturningAdvice">
+		<aop:pointcut expression="execution(* com.bit.sts05.model.DeptDao.find*(..))" id="cut1"/>
+		<aop:pointcut expression="execution(* com.bit.sts05.model.DeptDao.findAll(..))" id="cut2"/>
+		<aop:aspect ref="afterAdvice">
 			<aop:after-returning method="afterReturning" pointcut-ref="cut1" returning="rv"/>
+		</aop:aspect>
+		<aop:aspect ref="beforeAdvice">
+			<aop:before method="before" pointcut-ref="cut2"/>
+		</aop:aspect>
+		<aop:aspect ref="afterAdvice">
+			<aop:after-throwing method="afterThrowingTargetMethod" pointcut-ref="cut1" throwing="ex"/>
 		</aop:aspect>
 	</aop:config>
 	<aop:aspectj-autoproxy/>
+	
+	<!-- 
+	AOP용어
+			*aspect
+			Advice(부가기능) + PointCut(advice를 어디에 적용시킬 것인지 결정)
+			AOP의 기본 모듈이다.
+			핵심기능 코드 사이에 침투된 부가기능을 독립적인 aspect로 구분해 낼수 있다.
+			구분된 부가기능 aspect를 런타임 시에 필요한 위치에 동적으로 참여하게 할 수 있다.
+			싱글톤 형태의 객체로 존재한다.
+			
+			Target
+			핵심 기능을 담고 있는 모듈로 타겟은 부가기능을 부여할 대상이 된다.
+			
+			*Advice
+			타겟에 제공할 부가기능을 담고 있는 모듈
+			
+			Join Point
+			어드바이스가 적용될 수 있는 위치
+			
+			*Pointcut
+			어드바이스를 적용할 타겟의 메서드를 선별하는 정규표현식이다.
+			포인트컷 표현식은 execution으로 시작하고 메서드의 Signature를 비교하는 방법을 주로 이용한다.
+			
+			*Weaving
+			포인트컷에 의해서 결정된 타겟의 조인 포인트에 부가기능(advice)를 삽입하는 과정을 뜻한다.
+			AOP가 핵심기능(타겟)의 코드에 영향을 주지 않으면서 필요한 부가기능(advice)를 추가할 수 있도록
+			해주는 핵심적인 처리과정이다.
+	 -->
 </beans>
 
 
