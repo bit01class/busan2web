@@ -26,9 +26,9 @@
   	<tbody>
   	<c:forEach items="${list }" var="bean">
   		<tr>
-  			<td><a href="#">${bean.deptno }</a></td>
-  			<td><a href="#">${bean.dname }</a></td>
-  			<td><a href="#">${bean.loc }</a></td>
+  			<td><a href="detail?deptno=${bean.deptno }">${bean.deptno }</a></td>
+  			<td><a href="detail?deptno=${bean.deptno }">${bean.dname }</a></td>
+  			<td><a href="detail?deptno=${bean.deptno }">${bean.loc }</a></td>
   		</tr>
   	</c:forEach>
   	</tbody>

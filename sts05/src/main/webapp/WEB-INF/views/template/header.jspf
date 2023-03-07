@@ -6,5 +6,6 @@
 <script type="text/javascript" src="${pageContext.servletContext.contextPath }/resources/js/bootstrap.min.js"></script>
 <style type="text/css">
 	.navbar-brand img{ height: 100%;}
+	.modal-footer form{display: inline;}
 </style>
     
