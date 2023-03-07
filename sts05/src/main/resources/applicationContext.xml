@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+
+	<bean id="dataSource"
+	class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://192.168.99.103:3306/lecture"/>
+		<property name="username" value="scott"/>
+		<property name="password" value="tiger"/>
+	</bean>	
+
+	<bean id="jdbcTemplate"
+	class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<bean id="deptDao"
+	class="com.bit.sts05.model.DeptDaoImpl">
+		<constructor-arg ref="jdbcTemplate"/>
+	</bean>
+	
+	<bean id="afterReturningAdvice"
+	class="com.bit.sts05.utils.DaoAdvice"></bean>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* com.bit.sts05.model.DeptDao.findAll(..))" id="cut1"/>
+		<aop:aspect ref="afterReturningAdvice">
+			<aop:after-returning method="afterReturning" pointcut-ref="cut1" returning="rv"/>
+		</aop:aspect>
+	</aop:config>
+	<aop:aspectj-autoproxy/>
+</beans>
+
+
+
+
+
+
