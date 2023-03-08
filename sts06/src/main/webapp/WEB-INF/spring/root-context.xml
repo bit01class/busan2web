@@ -18,6 +18,18 @@
 	p:url="jdbc:mysql://192.168.99.103:3306/lecture"
 	p:username="scott" p:password="tiger"
 	/>
+	
+	<bean id="sqlSessionFactory"
+	class="org.mybatis.spring.SqlSessionFactoryBean"
+	p:configLocation="classpath:/mybatis-config.xml"
+	p:dataSource-ref="dataSource"
+	/>
+	
+	<bean id="sqlSession"
+	class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+	
 	<bean id="jdbcTemplate"
 	class="org.springframework.jdbc.core.JdbcTemplate"
 	p:dataSource-ref="dataSource"
