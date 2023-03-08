@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="driver" class="com.mysql.cj.jdbc.Driver"></bean>
+	<bean id="dataSource"
+	class="org.springframework.jdbc.datasource.SimpleDriverDataSource"
+	p:driver-ref="driver"
+	p:url="jdbc:mysql://192.168.99.103:3306/lecture"
+	p:username="scott" p:password="tiger"
+	/>
+	<bean id="jdbcTemplate"
+	class="org.springframework.jdbc.core.JdbcTemplate"
+	p:dataSource-ref="dataSource"
+	/>
+	<context:component-scan base-package="com.bit.sts06">
+		<context:exclude-filter type="annotation" expression="com.bit.sts06.HomeController"/>
+		<context:exclude-filter type="annotation" expression="com.bit.sts06.DeptController"/>
+	</context:component-scan>
+	
+	<bean id="transactionManager"
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+	p:dataSource-ref="dataSource"
+	/>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<aop:aspectj-autoproxy/>
+</beans>
+
+
+
+
+
+
