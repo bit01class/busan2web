@@ -4,7 +4,28 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.bit.sts07.model.DeptDao">
-  	<select id="findAll" resultType="com.bit.sts07.model.entity.DeptVo">
-  		select * from dept
+  	<select id="findAll" resultType="deptBean">
+  		SELECT * FROM dept
   	</select>
+  	<select id="findOne" parameterType="int" resultType="deptBean">
+  		SELECT * FROM dept WHERE DEPTNO=#{val}
+  	</select>
+  	<insert id="insertOne" parameterType="deptBean">
+  		INSERT INTO dept VALUES (#{deptno},#{dname},#{loc})
+  	</insert>
+  	<update id="updateOne" parameterType="deptBean">
+  		update dept set dname=#{dname}, loc=#{loc} where deptno= #{deptno}
+  	</update>
+  	<delete id="deleteOne" parameterType="int">
+  		delete from dept where deptno=#{val}
+  	</delete>
   </mapper>
+  
+  
+  
+  
+  
+  
+  
+  
+  

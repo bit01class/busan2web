@@ -4,6 +4,9 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
   
   <configuration>
+  	<typeAliases>
+  		<typeAlias type="com.bit.sts07.model.entity.DeptVo" alias="deptBean"/>
+  	</typeAliases>
   	<mappers>
   		<mapper resource="mapper/dept-mapper.xml"/>
   	</mappers>

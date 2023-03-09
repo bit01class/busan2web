@@ -25,7 +25,7 @@ public class DeptDaoTest {
 		assertNotNull(sqlSession.getMapper(DeptDao.class).findAll());
 	}
 
-}
+} 
 
 
 
