@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>수정 페이지</h1>
+<form action="./index.html" th:action="@{/update}" method="post">
+	<div>
+		<input type="text" name="deptno" placeholder="deptno" value="1111" th:value="${bean.deptno}"/>
+	</div>
+	<div>
+		<input type="text" name="dname" placeholder="dname" value="user1" th:attr="value=${bean.dname}"/>
+	</div>
+	<div>
+		<input type="text" name="loc" placeholder="loc" value="test" th:value="${bean.loc}"/>
+	</div>
+	<div>
+		<button>수정</button>
+	</div>
+</form>
+</body>
+</html>
