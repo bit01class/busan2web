@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<h1>ex02 page <span th:text="${session.user}"></span></h1>
+		<div>
+			<input/>
+			<button>전송</button>
+		</div>
+		<ul></ul>
+		
+		<script type="text/javascript">
+		// WebSocket 연결 생성
+		const socket = new WebSocket('ws://192.168.240.210:8080/echo');
+		
+		// 연결이 열리면
+		socket.addEventListener('open', function (event) {
+		    socket.send('Hello Server!');
+		});
+		socket.addEventListener('close',function(e){
+			setTimeout(function(){
+				//제접속
+				socket = new WebSocket('ws://192.168.240.210:8080/echo');
+			},1000);
+		});
+		
+		// 메시지 수신
+		socket.addEventListener('message', function (event) {
+		    $('<li/>').text(event.data).appendTo('ul');
+		    $(window).scrollTop();
+		});
+		
+		$(function(){
+			$('button').click(function(){
+				let msg=$('input').val();
+				socket.send(msg);
+				$('input').val('');
+			});
+		});
+		
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
