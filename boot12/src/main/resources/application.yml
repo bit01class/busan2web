@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lecture
+    username: scott
+    password: tiger
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    
+logging:
+  level:
+    web: info
+    '[com.bit.boot12]': debug
+       
