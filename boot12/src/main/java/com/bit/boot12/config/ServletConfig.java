@@ -21,7 +21,7 @@ public class ServletConfig implements WebMvcConfigurer{
 		reg.addViewController("/").setViewName("index");
 //		reg.addViewController("/login").setViewName("login");
 		reg.addViewController("/join").setViewName("join");
-		reg.addViewController("/dept/").setViewName("dept/index");
+//		reg.addViewController("/dept/").setViewName("dept/index");
 	}
 }
 

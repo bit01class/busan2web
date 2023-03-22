@@ -12,6 +12,13 @@
   </head>
   <body>
      <div class="container">
+	<nav>
+		<a href="/" th:href="@{/}" class="btn btn-default" role="button">Home</a>
+		<a href="/" th:href="@{/dept/}" class="btn btn-default" role="button">list</a>
+		<a sec:authorize="{!isAuthenticated()}" href="/" th:href="@{/login}" class="btn btn-default" role="button">login</a>
+		<a sec:authorize="{!isAuthenticated()}" href="/" th:href="@{/join}" class="btn btn-default" role="button">join</a>
+		<a sec:authorize="{isAuthenticated()}" href="/" th:href="@{/logout}" class="btn btn-default" role="button">logout</a>
+	</nav>  
       <form class="form-signin" method="post" action="/login">
         <h2 class="form-signin-heading">회원가입</h2>
 		<p>

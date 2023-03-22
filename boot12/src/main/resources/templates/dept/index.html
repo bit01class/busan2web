@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,10 +15,11 @@
 	<nav>
 		<a href="/" th:href="@{/}" class="btn btn-default" role="button">Home</a>
 		<a href="/" th:href="@{/dept/}" class="btn btn-default" role="button">list</a>
-		<a href="/" th:href="@{/login}" class="btn btn-default" role="button">login</a>
-		<a href="/" th:href="@{/join}" class="btn btn-default" role="button">join</a>
-		<a href="/" th:href="@{/logout}" class="btn btn-default" role="button">logout</a>
+		<a sec:authorize="{!isAuthenticated()}" href="/" th:href="@{/login}" class="btn btn-default" role="button">login</a>
+		<a sec:authorize="{!isAuthenticated()}" href="/" th:href="@{/join}" class="btn btn-default" role="button">join</a>
+		<a sec:authorize="{isAuthenticated()}" href="/" th:href="@{/logout}" class="btn btn-default" role="button">logout</a>
 	</nav>      
 	<h1>list page</h1>
-</div>
+	Logged user: <span sec:authentication="name">Bob</span>
+</nav>
 </body></html>

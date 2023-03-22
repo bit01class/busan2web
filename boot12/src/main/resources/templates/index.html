@@ -15,9 +15,9 @@
 	<nav>
 		<a href="/" th:href="@{/}" class="btn btn-default" role="button">Home</a>
 		<a href="/" th:href="@{/dept/}" class="btn btn-default" role="button">list</a>
-		<a href="/" th:href="@{/login}" class="btn btn-default" role="button">login</a>
-		<a href="/" th:href="@{/join}" class="btn btn-default" role="button">join</a>
-		<a href="/" th:href="@{/logout}" class="btn btn-default" role="button">logout</a>
+		<a sec:authorize="{!isAuthenticated()}" href="/" th:href="@{/login}" class="btn btn-default" role="button">login</a>
+		<a sec:authorize="{!isAuthenticated()}" href="/" th:href="@{/join}" class="btn btn-default" role="button">join</a>
+		<a sec:authorize="{isAuthenticated()}" href="/" th:href="@{/logout}" class="btn btn-default" role="button">logout</a>
 	</nav>   
 	<h1>index page</h1>      
 </div>

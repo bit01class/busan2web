@@ -1,5 +1,8 @@
 package com.bit.boot12.service;
 
+import java.util.List;
+
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,11 +25,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String ename) throws UsernameNotFoundException {
 		EmpVo bean=empRepo.findByEname(ename).getEntity();
-		return User.builder()
-				.username(bean.getEname())
-				.password(passwordEncoder.encode(String.valueOf(bean.getEmpno())))
-				.authorities("USER")
-				.build();
+//		return User.builder()
+//				.username(bean.getEname())
+//				.password(passwordEncoder.encode(String.valueOf(bean.getEmpno())))
+//				.authorities("USER")
+//				.build();
+		return new UserDetailsImpl(
+				bean.getEname(),passwordEncoder.encode(String.valueOf(bean.getEmpno()))
+				,List.of(new SimpleGrantedAuthority("USER"))
+				,bean.getJob(),bean.getHiredate(),bean.getMgr()
+				);
 	}
 
 }
